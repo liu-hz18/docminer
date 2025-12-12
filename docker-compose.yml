@@ -1,0 +1,74 @@
+networks:
+  docminer-network:
+    driver: bridge
+
+services:
+  llm-api-service:
+    image: vllm-ascend:v1
+    container_name: docminer-vllm-ascend
+    ports:
+      - "8000:8000" # 宿主机:容器端口（uvicorn 服务端口）
+    privileged: true
+    volumes:
+      # 挂载系统时间
+      - /etc/localtime:/etc/localtime:ro  # ro=只读，避免容器修改主机文件
+      - /etc/timezone:/etc/timezone:ro
+      # GL库文件挂载（只读）
+      - /lib/aarch64-linux-gnu/libGLdispatch.so.0:/lib/aarch64-linux-gnu/libGLdispatch.so.0:ro
+      - /lib/aarch64-linux-gnu/libGLX_mesa.so.0:/lib/aarch64-linux-gnu/libGLX_mesa.so.0:ro
+      - /lib/aarch64-linux-gnu/libGLX.so.0:/lib/aarch64-linux-gnu/libGLX.so.0:ro
+      - /lib/aarch64-linux-gnu/libGL.so.1:/lib/aarch64-linux-gnu/libGL.so.1:ro
+      - /lib/aarch64-linux-gnu/libglapi.so.0:/lib/aarch64-linux-gnu/libglapi.so.0:ro
+      # Ascend NPU 驱动/工具链（只读）
+      - /usr/local/Ascend/driver:/usr/local/Ascend/driver:ro
+      - /usr/local/Ascend/add-ons:/usr/local/Ascend/add-ons:ro
+      - /usr/local/Ascend/toolkit:/usr/local/Ascend/toolkit:ro
+      - /usr/local/sbin:/usr/local/sbin:ro
+      # Ascend 日志/配置
+      - /var/log/npu:/var/log/npu
+      - /var/log/npu:/usr/slog
+      - /etc/hccn.conf:/etc/hccn.conf
+      - /etc/ascend_install.info:/etc/ascend_install.info
+      # 业务目录持久化（宿主机相对路径 → 容器内路径）
+      - /home/docminer/output:/app/output:rw # /app/output 持久化
+      - /home/docminer/models:/models:ro # /models 持久化（与参考示例路径一致）
+      - /home/docminer/config:/app/config:rw # /app/config 持久化
+      - /home/docminer/source:/app/source:rw # /app/source 持久化（匹配 reload 目录）
+      - /home/docminer/documents:/app/documents:ro # /app/source 持久化（匹配 reload 目录）
+      - /home/docminer/start-service.sh:/app/start-service.sh
+    devices:
+      # NPU 设备映射（根据实际可用设备调整编号）
+      - /dev/davinci4:/dev/davinci4:rwm
+      - /dev/davinci5:/dev/davinci5:rwm
+      - /dev/davinci6:/dev/davinci6:rwm
+      - /dev/davinci7:/dev/davinci7:rwm
+      - /dev/davinci_manager:/dev/davinci_manager:rwm
+      - /dev/devmm_svm:/dev/devmm_svm:rwm
+      - /dev/hisi_hdc:/dev/hisi_hdc:rwm
+    environment:
+      - TZ=Asia/Shanghai
+      - PYTHONUNBUFFERED=1  # 确保日志实时输出
+      - PYTHONIOENCODING=utf-8
+      - ASCEND_RT_VISIBLE_DEVICES=4,5,6,7 # 与设备映射的 NPU 编号一致
+      - LD_LIBRARY_PATH=/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:${LD_LIBRARY_PATH:-}
+      - MINERU_MODEL_SOURCE=local # 业务环境变量（优先 Compose 配置）
+      - DOCMINER_BACKEND=npu
+      - VLLM_WORKER_MULTIPROC_METHOD=spawn
+      - HCCL_OP_EXPANSION_MODE=AIV
+    networks:
+      - docminer-network
+    restart: unless-stopped
+    # 健康检查（适配默认 uvicorn 接口）
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/v1/health" ] # 无 /health 则检测根路径
+      interval: 120s
+      timeout: 3s
+      retries: 20
+    # 权限优化：容器内目录权限初始化
+    command: >
+      /bin/bash -c "
+        # 赋予脚本执行权限
+        chmod +x /app/start-service.sh &&
+        # 执行启动脚本（前台运行）
+        exec /app/start-service.sh
+      "

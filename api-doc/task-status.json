@@ -1,0 +1,18 @@
+# get 请求
+# /v1/task-status
+
+# args:
+#  uuid: str
+
+# return:
+{
+    "code": 200,
+    "data": {
+        "uuid": "5da7f326c9c3421093485690b5c5256f",
+        "position_in_queue": 1,  # 序从 0 开始
+        "status": "pending",  # one of ["pending", "running", "finished"]
+        "pending_tasks": 3,
+        "running_tasks": 1,
+        "total_tasks": 4,
+    }
+}

@@ -1,0 +1,238 @@
+{
+    "uuid": "5da7f326c9c3421093485690b5c5256f",
+    "task": "guangfu",
+    "status": "success",
+    "filename": "诸城绿电新能源有限公司国家电投山东诸城密州光伏发电项目.pdf",
+    "results": [
+        {
+            "key": "交流侧装机容量",
+            "value": "91.8",
+            "unit": "MW",
+            "related_contexts": [
+                {
+                    "type": "text",
+                    "text": "箱变将光伏发电单元发出的电能升压至中压等级电压，再通过地埋电缆或架空集电线路送到升压站进行第二级升压。光伏箱变具有如下运行特征：第一，变压器容量相对较小，空载时间长。随着光伏组件技术的提高，国内光伏发电单元从早期的1MW发展目前的3MW及以上，变压器容量逐渐增大。第二，低进高出的连接方式。光伏逆变器交流回路从箱变低压侧进线，高压侧 $3 5 \\mathrm { k V }$ 出线，进出线均采用电缆连接方式。目前多选用 $0 . 8 \\mathrm { k V } / 3 5 \\mathrm { k V }$ 的升压变压器升压，然后通过集电线路汇集至升压站 $3 5 \\mathrm { k V }$ 配电装置上。第三，高压侧配置避雷器。高压侧避雷器与逆变器内部的过电压保护装置组成过电压吸收回路，在高压侧的绝缘设计上应充分考虑避雷器残余电压对高压侧电气设备的影响。第四，使用环境恶劣。我国光伏资源丰富的地区很多都是在极端温差大、风沙盛行、空气湿度大、盐雾聚集等环境恶劣的地区，箱变在设计生产中还应考虑防尘、防雨、防凝露、防动物进入以及通风散热的要求。第五，过载时间少。由于变压器容量通常按光伏逆变器额定容量相等或按最大持续出力选择，光伏箱变很少出现过载情况。",
+                    "pageid": 77  # 页面编号从 0 开始
+                },
+                {
+                    "type": "text",
+                    "text": "项目本期建设装机容量 91.8MW，项目所发电量全额上网。本期直流侧总容量为 5110.0528MWp，由 18 个 2.1MW 和 18 个 3.0MW 发电单元组成，拟采用双面双玻异质结715Wp 组件，逆变器采用300kW 组串逆变器。",
+                    "pageid": 9
+                },
+                {
+                    "type": "text",
+                    "text": "项目计划采用“牧光互补”的综合士地利用形式，本期项目装机容量 91.8MW。拟采用715Wp 异质结双面双玻组件，直流侧安装容量为110.0528MWp。项目采取分片发电，集中并网的技术方案，所发电量全部上网。",
+                    "pageid": 43
+                },
+                {
+                    "type": "text",
+                    "text": "根据所选光伏组件和并网逆变器性能参数，以及光伏组件在满足项目地气候环境的条件下，根据现场地形条件，本期项目建设规模为91.8MW，采用18个2.1MW方阵，18个3.0MW方阵，光伏组件共计153920 块组件。共5920串光伏组件，直流侧总容量为 110.0528MWp。",
+                    "pageid": 67
+                },
+                {
+                    "type": "text",
+                    "text": "项目本期建设装机容量 91.8MW，一次建成。工程用地主要为永久用地以及临时用11地。",
+                    "pageid": 174
+                },
+                {
+                    "type": "text",
+                    "text": "项目规划装机容量 91.8MW。拟采用 $7 1 5 \\mathrm { W p }$ 双玻双面异质结光伏组件 153920 块，直流侧安装容量为 $1 1 0 . 0 5 2 8 \\mathrm { M W p }$ 。全部采用固定安装方式，组件安装角度为 $2 7 ^ { \\circ }$ 。项目采取分片发电，集中并网的技术方案，所发电量全部上网。",
+                    "pageid": 277
+                },
+                {
+                    "type": "text",
+                    "text": "根据本期工程的实际情况，结合项目用地情况，拟定本光伏并网发电系统的本期容量为 91.8MW，直流侧装机容量为 110.0528MWp，共包含 18 个 2.1MW 光伏方阵和 18个3.0MW光伏方阵。",
+                    "pageid": 76
+                },
+                {
+                    "type": "text",
+                    "text": "项目本期建设装机容量 91.8MW，采用分块发电、集中并网方案。根据所选光伏组16件和并网逆变器性能参数，以及光伏组件在满足项目实施地气候环境的条件下，根据现场地形条件，本期采用18个2.1MW和18个3.0MW发电单元组成。结合本项目地块特点，发电单元采用组串式逆变器方案；逆变器将直流电逆变成交流电，后经升压箱式变压器升压。本工程光伏组件共计约 153920块双面双玻异质结 $7 1 5 \\mathrm { W p }$ 组件。本期项目实际建设容量为 110.0528MWp。",
+                    "pageid": 10
+                },
+                {
+                    "type": "text",
+                    "text": "截至 2023 年底，潍坊电网拥有省调直调火电厂 2 座，装机总容量为 4000MW；省 13调直调自备火电厂 3 座，装机总容量为 1005MW；省调许可风电场 22 座，装机总容量为2339.85MW；省调许可光伏电站38座，装机总容量为2016MW；配置储能功能的新能源电站 4 座，储能装机总容量为 55MW；地调直调(自备)电厂 53 座，装机总容量为1523.88MW；分布式光伏装机总容量为 4802MW。",
+                    "pageid": 38
+                },
+                {
+                    "type": "text",
+                    "text": "项目本期建设装机容量 91.8MW，新建 1 座 $2 2 0 \\mathrm { k V }$ 升压站，建设 180MVA 主变 14台。新建1回 $2 2 0 \\mathrm { k V }$ 线路接入瑞俊站 $2 2 0 \\mathrm { k V }$ 侧，新建架空长度 $5 . 0 \\mathrm { k m }$ 。",
+                    "pageid": 72
+                }
+            ]
+        },
+        {
+            "key": "静态投资",
+            "value": "31479.74",
+            "unit": "万元",
+            "related_contexts": [
+                {
+                    "type": "text",
+                    "text": "根据工程投资概算，工程固定资产静态投资为 31479.74 万元，工程动态投资为31809.41万元。本工程单位千瓦静态投资为 2860元/kW，单位千瓦动态投资为 2890 元/kW。",
+                    "pageid": 242
+                },
+                {
+                    "type": "text",
+                    "text": "可研投资概算，按照 2025 年一季度价格水平编制。经审核，工程静态投资 31479.74 万元，单位千瓦静态投资为 2860元/kWp； 建设 期贷款 利息 329.67 万 元，工 程动 态投资31809.41 万元，单位千瓦动态投资 2890 元/kWp。",
+                    "pageid": 287
+                },
+                {
+                    "type": "text",
+                    "text": "(1) 本项目建设工期为 9 个月，项目静态投资31479.74 万元。工程单位千瓦静态投6资为 2860 元/kW。",
+                    "pageid": 246
+                },
+                {
+                    "type": "text",
+                    "text": "(3) 在静态投资 31479.74 万元，工程单位千瓦静态投资为 2860 元/kW，动态投资31785.92，单位千瓦动态投资为 2888 元 $/ \\mathrm { k W }$ 情况下，根据项目实际贷款利率 $3 . 2 5 \\%$ 进行财务评价得出：项目投资财务内部收益率为 $5 . 4 2 \\%$ （税前），项目投资财务内部收益率为 $4 . 7 5 \\%$ （税后），资本金财务内部收益率为 $7 . 2 6 \\%$ ，投资回收期（税前）为14年，总投资收益率为 $2 . 8 7 \\%$ ，项目资本金净利润率为 $7 . 7 1 \\%$ 。",
+                    "pageid": 246
+                },
+                {
+                    "type": "text",
+                    "text": "由于本项目静态投资为31479.74万元，单位静态投资2860元/kW，工程动态投资 1031809.41 万元，单位动态投资 2890 元/kW。",
+                    "pageid": 17
+                },
+                {
+                    "type": "text",
+                    "text": "本期建设 100MW，项目所发电量全额上网。本期直流侧总容量为110.0528MWp。 5新建1 座 $2 2 0 \\mathrm { k V }$ 升压站，工程静态投资 31479.74万元，单位投资 2860 元/kW；工程动态投资 31809.41 万元，单位投资 2890 元/kW。",
+                    "pageid": 213
+                },
+                {
+                    "type": "text",
+                    "text": "工程固定资产静态投资为 31479.74万元，建设资金来源为资本金和银行贷款。资本1金占动态投资的 $20 \\%$ ，其余的资金由银行借款。其中银行贷款偿还期为15年，宽限期为1年，宽限期后每年按贷款等额还本利息照付，年贷款利率为 $3 . 5 \\%$ 。",
+                    "pageid": 242
+                },
+                {
+                    "type": "text",
+                    "text": "4）本项目整体工程静态投资为31479.74万元时，项目投资财务内部收益率 $5 . 4 2 \\%$ （税前），项目投资的投资回收期 14年（税前），资本金财务内部收益率为 $6 . 8 4 \\%$ ，资本金净利润率为 $7 . 4 2 \\%$ ，财务指标良好，项目经济上可行。",
+                    "pageid": 283
+                },
+                {
+                    "type": "table",
+                    "caption": "附表 1：项目总投资使用计划与资金筹措表（人民币单位：万元）",
+                    "text": "<table><tr><td rowspan=2 colspan=1>序号</td><td rowspan=2 colspan=1>项目</td><td rowspan=2 colspan=1>合计</td><td rowspan=1 colspan=2>计算期</td></tr><tr><td rowspan=1 colspan=1>第1年</td><td rowspan=1 colspan=1>第2年</td></tr><tr><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>项目总投资</td><td rowspan=1 colspan=1>32139.57</td><td rowspan=1 colspan=1>31809.41</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>1. 1</td><td rowspan=1 colspan=1>建设投资</td><td rowspan=1 colspan=1>31479.74</td><td rowspan=1 colspan=1>31479.74</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>1.2</td><td rowspan=1 colspan=1>建设期利息</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>1.3</td><td rowspan=1 colspan=1>流动资金</td><td rowspan=1 colspan=1>330.16</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>资金筹措</td><td rowspan=1 colspan=1>32139.57</td><td rowspan=1 colspan=1>31809.41</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2.1</td><td rowspan=1 colspan=1>项目资本金</td><td rowspan=1 colspan=1>6692.04</td><td rowspan=1 colspan=1>6361.88</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2.1.1</td><td rowspan=1 colspan=1>用于建设投资</td><td rowspan=1 colspan=1>6361.88</td><td rowspan=1 colspan=1>6361.88</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.1.2</td><td rowspan=1 colspan=1>用于流动资金</td><td rowspan=1 colspan=1>330.16</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2.2</td><td rowspan=1 colspan=1>债务资金</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.2.1</td><td rowspan=1 colspan=1>用于建设投资</td><td rowspan=1 colspan=1>25117.86</td><td rowspan=1 colspan=1>25117.86</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.2.2</td><td rowspan=1 colspan=1>用于建设期利息</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.2.3</td><td rowspan=1 colspan=1>用于流动资金</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td></tr></table>",
+                    "pageid": 248
+                },
+                {
+                    "type": "table",
+                    "caption": "附件1：总概算表",
+                    "text": "<table><tr><td rowspan=1 colspan=1>编号</td><td rowspan=1 colspan=1>项目名称</td><td rowspan=1 colspan=1>设备购置费（万元）</td><td rowspan=1 colspan=1>建安工程费（万元）</td><td rowspan=1 colspan=1>其它费用（万元）</td><td rowspan=1 colspan=1>合计（万元）</td><td rowspan=1 colspan=1>占投资额（%)</td></tr><tr><td rowspan=1 colspan=1>一</td><td rowspan=1 colspan=1>设备及安装工程</td><td rowspan=1 colspan=1>12609</td><td rowspan=1 colspan=1>7168</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>19777</td><td rowspan=1 colspan=1>62.17</td></tr><tr><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>发电设备及安装工程</td><td rowspan=1 colspan=1>9792</td><td rowspan=1 colspan=1>6537</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>16328</td><td rowspan=1 colspan=1>51.33</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>升压站变配电设备及安装工程</td><td rowspan=1 colspan=1>1598</td><td rowspan=1 colspan=1>266</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>1864</td><td rowspan=1 colspan=1>5.86</td></tr><tr><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>控制保护设备及安装工程</td><td rowspan=1 colspan=1>1131</td><td rowspan=1 colspan=1>323</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>1454</td><td rowspan=1 colspan=1>4.57</td></tr><tr><td rowspan=1 colspan=1>4</td><td rowspan=1 colspan=1>其他设备及安装工程</td><td rowspan=1 colspan=1>89</td><td rowspan=1 colspan=1>43</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>131</td><td rowspan=1 colspan=1>0.41</td></tr><tr><td rowspan=1 colspan=1>三</td><td rowspan=1 colspan=1>建筑工程</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>4272</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>4272</td><td rowspan=1 colspan=1>13.43</td></tr><tr><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>发电场工程</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>2817</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>2817</td><td rowspan=1 colspan=1>8.86</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>升压变电站工程</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>313</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>313</td><td rowspan=1 colspan=1>0.98</td></tr><tr><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>房屋建筑工程</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>453</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>453</td><td rowspan=1 colspan=1>1.43</td></tr><tr><td rowspan=1 colspan=1>4</td><td rowspan=1 colspan=1>交通工程</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>301</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>301</td><td rowspan=1 colspan=1>0.95</td></tr><tr><td rowspan=1 colspan=1>5</td><td rowspan=1 colspan=1>其他建筑工程</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>388</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>388</td><td rowspan=1 colspan=1>1.22</td></tr><tr><td rowspan=1 colspan=1>三</td><td rowspan=1 colspan=1>其他费用</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>5441</td><td rowspan=1 colspan=1>5441</td><td rowspan=1 colspan=1>17.1</td></tr><tr><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>项目建设用地费</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>3399</td><td rowspan=1 colspan=1>3399</td><td rowspan=1 colspan=1>10.69</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>项目建设管理费</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>1569</td><td rowspan=1 colspan=1>1569</td><td rowspan=1 colspan=1>4.93</td></tr><tr><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>生产准备费</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>128</td><td rowspan=1 colspan=1>128</td><td rowspan=1 colspan=1>0.4</td></tr><tr><td rowspan=1 colspan=1>4</td><td rowspan=1 colspan=1>勘察设计费</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>200</td><td rowspan=1 colspan=1>200</td><td rowspan=1 colspan=1>0.63</td></tr><tr><td rowspan=1 colspan=1>5</td><td rowspan=1 colspan=1>其他</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>145</td><td rowspan=1 colspan=1>145</td><td rowspan=1 colspan=1>0.46</td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>一至三部分合计</td><td rowspan=1 colspan=1>12609</td><td rowspan=1 colspan=1>11440</td><td rowspan=1 colspan=1>5441</td><td rowspan=1 colspan=1>29490</td><td rowspan=1 colspan=1>92.71</td></tr><tr><td rowspan=1 colspan=1>四</td><td rowspan=1 colspan=1>基本预备费（2%）</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>590</td><td rowspan=1 colspan=1>1.85</td></tr><tr><td rowspan=1 colspan=1>五</td><td rowspan=1 colspan=1>220kV送出线路</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>1400</td><td rowspan=1 colspan=1>4.4</td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>工程建设静态投资</td><td rowspan=1 colspan=1>12609</td><td rowspan=1 colspan=1>11440</td><td rowspan=1 colspan=1>5441</td><td rowspan=1 colspan=1>31479.74</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>建设期利息</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>1.04</td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>工程动态投资</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>31809.41</td><td rowspan=1 colspan=1>100</td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>单位千瓦静态投资（元/kWp)</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>2860</td><td rowspan=1 colspan=1></td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>单位千瓦动态投资（元/kwp)</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>2890</td><td rowspan=1 colspan=1></td></tr></table>",
+                    "pageid": 288
+                }
+            ]
+        },
+        {
+            "key": "建设期利息",
+            "value": "329.67",
+            "unit": "万元",
+            "related_contexts": [
+                {
+                    "type": "text",
+                    "text": "可研投资概算，按照 2025 年一季度价格水平编制。经审核，工程静态投资 31479.74 万元，单位千瓦静态投资为 2860元/kWp； 建设 期贷款 利息 329.67 万 元，工 程动 态投资31809.41 万元，单位千瓦动态投资 2890 元/kWp。",
+                    "pageid": 287
+                },
+                {
+                    "type": "text",
+                    "text": "经计算，本项目计入固定资产的建设期利息为329.67万元。11",
+                    "pageid": 242
+                },
+                {
+                    "type": "text",
+                    "text": "工程固定资产静态投资为 31479.74万元，建设资金来源为资本金和银行贷款。资本1金占动态投资的 $20 \\%$ ，其余的资金由银行借款。其中银行贷款偿还期为15年，宽限期为1年，宽限期后每年按贷款等额还本利息照付，年贷款利率为 $3 . 5 \\%$ 。",
+                    "pageid": 242
+                },
+                {
+                    "type": "text",
+                    "text": "(1) 建设期利息 10",
+                    "pageid": 242
+                },
+                {
+                    "type": "table",
+                    "caption": "表 15.5-1 主要技术经济指标表 16",
+                    "text": "<table><tr><td colspan=\"1\" rowspan=\"1\">工程名称</td><td colspan=\"2\" rowspan=\"1\">国电投山东诸城密州光伏发电项目</td><td colspan=\"2\" rowspan=\"1\">光伏组件</td><td colspan=\"1\" rowspan=\"1\">元/Wp</td><td colspan=\"1\" rowspan=\"1\">0.7</td></tr><tr><td colspan=\"1\" rowspan=\"1\">建设地点</td><td colspan=\"2\" rowspan=\"1\">山东省诸城市</td><td colspan=\"2\" rowspan=\"1\">组串逆变器300kW</td><td colspan=\"1\" rowspan=\"1\">元/台</td><td colspan=\"1\" rowspan=\"1\">34500</td></tr><tr><td colspan=\"1\" rowspan=\"1\">装机规模</td><td colspan=\"1\" rowspan=\"1\">MWp</td><td colspan=\"1\" rowspan=\"1\">110.0528</td><td colspan=\"1\" rowspan=\"1\">主要</td><td colspan=\"1\" rowspan=\"1\">组件</td><td colspan=\"1\" rowspan=\"1\">块</td><td colspan=\"1\" rowspan=\"1\">153920</td></tr><tr><td colspan=\"1\" rowspan=\"1\">组件容量</td><td colspan=\"1\" rowspan=\"1\">Wp/块</td><td colspan=\"1\" rowspan=\"1\">715</td><td colspan=\"1\" rowspan=\"2\">工程量</td><td colspan=\"1\" rowspan=\"1\">镀锌钢支架</td><td colspan=\"1\" rowspan=\"1\">t</td><td colspan=\"1\" rowspan=\"1\">4073.25</td></tr><tr><td colspan=\"1\" rowspan=\"1\">年均上网电量</td><td colspan=\"1\" rowspan=\"1\">万kWh</td><td colspan=\"1\" rowspan=\"1\">13469.71</td><td colspan=\"1\" rowspan=\"1\">箱变</td><td colspan=\"1\" rowspan=\"1\">台</td><td colspan=\"1\" rowspan=\"1\">36</td></tr><tr><td colspan=\"1\" rowspan=\"1\">工程静态投资</td><td colspan=\"1\" rowspan=\"1\">万元</td><td colspan=\"1\" rowspan=\"1\">31479.74</td><td colspan=\"1\" rowspan=\"2\"></td><td colspan=\"1\" rowspan=\"1\">土石方开挖</td><td colspan=\"1\" rowspan=\"1\">万m</td><td colspan=\"1\" rowspan=\"1\">1.83</td></tr><tr><td colspan=\"1\" rowspan=\"1\">建设期利息</td><td colspan=\"1\" rowspan=\"1\">万元</td><td colspan=\"1\" rowspan=\"1\">329.67</td><td colspan=\"1\" rowspan=\"1\">土石方回填</td><td colspan=\"1\" rowspan=\"1\">万m³</td><td colspan=\"1\" rowspan=\"1\">2.45</td></tr><tr><td colspan=\"1\" rowspan=\"1\">工程动态投资</td><td colspan=\"1\" rowspan=\"1\">万元</td><td colspan=\"1\" rowspan=\"1\">31809.41</td><td colspan=\"1\" rowspan=\"2\"></td><td colspan=\"1\" rowspan=\"1\">混凝土</td><td colspan=\"1\" rowspan=\"1\">m³</td><td colspan=\"1\" rowspan=\"1\">3611.1</td></tr><tr><td colspan=\"1\" rowspan=\"1\">单位千瓦投资（静态）</td><td colspan=\"1\" rowspan=\"1\">元/kW</td><td colspan=\"1\" rowspan=\"1\">2860</td><td colspan=\"1\" rowspan=\"1\">钢筋</td><td colspan=\"1\" rowspan=\"1\">t</td><td colspan=\"1\" rowspan=\"1\">194.05</td></tr><tr><td colspan=\"1\" rowspan=\"1\">单位千瓦投资（动态）</td><td colspan=\"1\" rowspan=\"1\">元/kW</td><td colspan=\"1\" rowspan=\"1\">2890</td><td colspan=\"1\" rowspan=\"2\">建设用地面积</td><td colspan=\"1\" rowspan=\"1\">永久用地面积</td><td colspan=\"1\" rowspan=\"1\">亩</td><td colspan=\"1\" rowspan=\"1\">16.63</td></tr><tr><td colspan=\"1\" rowspan=\"2\">生产单位定员</td><td colspan=\"1\" rowspan=\"2\">人</td><td colspan=\"1\" rowspan=\"2\">9</td><td colspan=\"1\" rowspan=\"1\">租地</td><td colspan=\"1\" rowspan=\"1\">亩</td><td colspan=\"1\" rowspan=\"1\">1800</td></tr><tr><td colspan=\"2\" rowspan=\"1\">总工期</td><td colspan=\"1\" rowspan=\"1\">月</td><td colspan=\"1\" rowspan=\"1\">9</td></tr></table>",
+                    "pageid": 216
+                },
+                {
+                    "type": "text",
+                    "text": "本工程资本金按总投资的 $20 \\%$ 计算，建设期贷款利息按本期 LPR 贷款利率，长期 12贷款利率 $3 . 5 \\%$ 计算，1年短期利率 $3 \\%$ 。",
+                    "pageid": 216
+                },
+                {
+                    "type": "table",
+                    "caption": "附表 1：项目总投资使用计划与资金筹措表（人民币单位：万元）",
+                    "text": "<table><tr><td rowspan=2 colspan=1>序号</td><td rowspan=2 colspan=1>项目</td><td rowspan=2 colspan=1>合计</td><td rowspan=1 colspan=2>计算期</td></tr><tr><td rowspan=1 colspan=1>第1年</td><td rowspan=1 colspan=1>第2年</td></tr><tr><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>项目总投资</td><td rowspan=1 colspan=1>32139.57</td><td rowspan=1 colspan=1>31809.41</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>1. 1</td><td rowspan=1 colspan=1>建设投资</td><td rowspan=1 colspan=1>31479.74</td><td rowspan=1 colspan=1>31479.74</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>1.2</td><td rowspan=1 colspan=1>建设期利息</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>1.3</td><td rowspan=1 colspan=1>流动资金</td><td rowspan=1 colspan=1>330.16</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>资金筹措</td><td rowspan=1 colspan=1>32139.57</td><td rowspan=1 colspan=1>31809.41</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2.1</td><td rowspan=1 colspan=1>项目资本金</td><td rowspan=1 colspan=1>6692.04</td><td rowspan=1 colspan=1>6361.88</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2.1.1</td><td rowspan=1 colspan=1>用于建设投资</td><td rowspan=1 colspan=1>6361.88</td><td rowspan=1 colspan=1>6361.88</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.1.2</td><td rowspan=1 colspan=1>用于流动资金</td><td rowspan=1 colspan=1>330.16</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>2.2</td><td rowspan=1 colspan=1>债务资金</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.2.1</td><td rowspan=1 colspan=1>用于建设投资</td><td rowspan=1 colspan=1>25117.86</td><td rowspan=1 colspan=1>25117.86</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.2.2</td><td rowspan=1 colspan=1>用于建设期利息</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>329.67</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.2.3</td><td rowspan=1 colspan=1>用于流动资金</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td></tr></table>",
+                    "pageid": 248
+                },
+                {
+                    "type": "table",
+                    "caption": "附表 4：借款还本付息计划表（人民币单位：万元）",
+                    "text": "<table><tr><td rowspan=2 colspan=1>序号</td><td rowspan=2 colspan=1>项目</td><td rowspan=2 colspan=1>合计</td><td rowspan=1 colspan=1>建设期</td><td rowspan=1 colspan=12>运行期</td></tr><tr><td rowspan=1 colspan=1>第1年</td><td rowspan=1 colspan=1>第2年</td><td rowspan=1 colspan=1>第3年</td><td rowspan=1 colspan=1>第4年</td><td rowspan=1 colspan=1>第5年</td><td rowspan=1 colspan=1>第6年</td><td rowspan=1 colspan=1>第7年</td><td rowspan=1 colspan=1>第8年</td><td rowspan=1 colspan=1>第9年</td><td rowspan=1 colspan=1>第10年</td><td rowspan=1 colspan=1>第11年</td><td rowspan=1 colspan=1>第12年</td><td rowspan=1 colspan=1>第13年</td></tr><tr><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>长期借款1</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>1.1</td><td rowspan=1 colspan=1>期初借款余额</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>23751.03</td><td rowspan=1 colspan=1>22054.53</td><td rowspan=1 colspan=1>20358.02</td><td rowspan=1 colspan=1>18661.52</td><td rowspan=1 colspan=1>16965.02</td><td rowspan=1 colspan=1>15268.52</td><td rowspan=1 colspan=1>13572.02</td><td rowspan=1 colspan=1>11875.51</td><td rowspan=1 colspan=1>10179.01</td><td rowspan=1 colspan=1>8482.51</td><td rowspan=1 colspan=1>6786.01</td></tr><tr><td rowspan=1 colspan=1>1.2</td><td rowspan=1 colspan=1>当期还本付息</td><td rowspan=1 colspan=1>32572.84</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>2587.17</td><td rowspan=1 colspan=1>2527.79</td><td rowspan=1 colspan=1>2468.41</td><td rowspan=1 colspan=1>2409.03</td><td rowspan=1 colspan=1>2349.66</td><td rowspan=1 colspan=1>2290.28</td><td rowspan=1 colspan=1>2230.9</td><td rowspan=1 colspan=1>2171.52</td><td rowspan=1 colspan=1>2112. 14</td><td rowspan=1 colspan=1>2052.77</td><td rowspan=1 colspan=1>1993.39</td><td rowspan=1 colspan=1>1934.01</td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>其中：还本</td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td><td rowspan=1 colspan=1>1696.5</td></tr><tr><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>付息</td><td rowspan=1 colspan=1>7125.31</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>890.66</td><td rowspan=1 colspan=1>831.29</td><td rowspan=1 colspan=1>771.91</td><td rowspan=1 colspan=1>712.53</td><td rowspan=1 colspan=1>653.15</td><td rowspan=1 colspan=1>593.78</td><td rowspan=1 colspan=1>534.4</td><td rowspan=1 colspan=1>475.02</td><td rowspan=1 colspan=1>415.64</td><td rowspan=1 colspan=1>356.27</td><td rowspan=1 colspan=1>296.89</td><td rowspan=1 colspan=1>237.51</td></tr><tr><td rowspan=1 colspan=1>1.3</td><td rowspan=1 colspan=1>期末借款余额</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>25447.53</td><td rowspan=1 colspan=1>23751.03</td><td rowspan=1 colspan=1>22054.53</td><td rowspan=1 colspan=1>20358.02</td><td rowspan=1 colspan=1>18661.52</td><td rowspan=1 colspan=1>16965.02</td><td rowspan=1 colspan=1>15268.52</td><td rowspan=1 colspan=1>13572.02</td><td rowspan=1 colspan=1>11875.51</td><td rowspan=1 colspan=1>10179.01</td><td rowspan=1 colspan=1>8482.51</td><td rowspan=1 colspan=1>6786.01</td><td rowspan=1 colspan=1>5089.51</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>流动资金借款</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.1</td><td rowspan=1 colspan=1>流动资金借款累计</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.2</td><td rowspan=1 colspan=1>流动资金利息</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>2.3</td><td rowspan=1 colspan=1>偿还流动资金借款本金</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td></tr><tr><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>短期借款</td><td rowspan=1 colspan=1>3297. 44</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>119.94</td><td rowspan=1 colspan=1>392.56</td></tr><tr><td rowspan=1 colspan=1>3.1</td><td rowspan=1 colspan=1>偿还短期借款本金</td><td rowspan=1 colspan=1>3297.44</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>119.94</td></tr><tr><td rowspan=1 colspan=1>3.2</td><td rowspan=1 colspan=1>短期借款利息</td><td rowspan=1 colspan=1>98.92</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>3.6</td><td rowspan=1 colspan=1>11.78</td></tr><tr><td rowspan=1 colspan=1>计算指</td><td rowspan=1 colspan=1>利息备付率</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>1.73</td><td rowspan=1 colspan=1>1.65</td><td rowspan=1 colspan=1>1.57</td><td rowspan=1 colspan=1>1.47</td><td rowspan=1 colspan=1>1.36</td><td rowspan=1 colspan=1>1. 1</td><td rowspan=1 colspan=1>1.16</td><td rowspan=1 colspan=1>1.27</td><td rowspan=1 colspan=1>1.42</td><td rowspan=1 colspan=1>1.61</td><td rowspan=1 colspan=1>1.86</td><td rowspan=1 colspan=1>2.19</td></tr><tr><td rowspan=1 colspan=1>标</td><td rowspan=1 colspan=1>偿债备付率</td><td rowspan=1 colspan=1></td><td rowspan=1 colspan=1>0</td><td rowspan=1 colspan=1>1.14</td><td rowspan=1 colspan=1>1.1</td><td rowspan=1 colspan=1>1.06</td><td rowspan=1 colspan=1>1.02</td><td rowspan=1 colspan=1>0.98</td><td rowspan=1 colspan=1>0.89</td><td rowspan=1 colspan=1>0.9</td><td rowspan=1 colspan=1>0.91</td><td rowspan=1 colspan=1>0.93</td><td rowspan=1 colspan=1>0.94</td><td rowspan=1 colspan=1>0.95</td><td rowspan=1 colspan=1>0.91</td></tr></table>",
+                    "pageid": 255
+                },
+                {
+                    "type": "table",
+                    "caption": "附件2：财务指标汇总表",
+                    "text": "<table><tr><td rowspan=1 colspan=4>财务指标汇总表</td></tr><tr><td rowspan=1 colspan=1>序号</td><td rowspan=1 colspan=1>项目</td><td rowspan=1 colspan=1>单位</td><td rowspan=1 colspan=1>数值</td></tr><tr><td rowspan=1 colspan=1>1</td><td rowspan=1 colspan=1>系统容量</td><td rowspan=1 colspan=1>MW</td><td rowspan=1 colspan=1>110.05</td></tr><tr><td rowspan=1 colspan=1>2</td><td rowspan=1 colspan=1>年售电量</td><td rowspan=1 colspan=1>MWh</td><td rowspan=1 colspan=1>134697.1</td></tr><tr><td rowspan=1 colspan=1>3</td><td rowspan=1 colspan=1>项目总投资</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>32139.57</td></tr><tr><td rowspan=1 colspan=1>4</td><td rowspan=1 colspan=1>建设期利息</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>329.67</td></tr><tr><td rowspan=1 colspan=1>5</td><td rowspan=1 colspan=1>流动资金</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>330.16</td></tr><tr><td rowspan=1 colspan=1>6</td><td rowspan=1 colspan=1>销售收入总额（不含增值税）</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>87722.23</td></tr><tr><td rowspan=1 colspan=1>7</td><td rowspan=1 colspan=1>总成本费用</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>71042.56</td></tr><tr><td rowspan=1 colspan=1>8</td><td rowspan=1 colspan=1>销售税金附加总额</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>865.04</td></tr><tr><td rowspan=1 colspan=1>9</td><td rowspan=1 colspan=1>利润总额</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>15814.64</td></tr><tr><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>经营期平均电价（不含增值税）</td><td rowspan=1 colspan=1>元/kWh</td><td rowspan=1 colspan=1>0.2605</td></tr><tr><td rowspan=1 colspan=1>11</td><td rowspan=1 colspan=1>经营期平均电价（含增值税）</td><td rowspan=1 colspan=1>元/kWh</td><td rowspan=1 colspan=1>0.2944</td></tr><tr><td rowspan=1 colspan=1>12</td><td rowspan=1 colspan=1>项目投资回收期（所得税前）</td><td rowspan=1 colspan=1>年</td><td rowspan=1 colspan=1>14</td></tr><tr><td rowspan=1 colspan=1>13</td><td rowspan=1 colspan=1>项目投资回收期（所得税后）</td><td rowspan=1 colspan=1>年</td><td rowspan=1 colspan=1>14.65</td></tr><tr><td rowspan=1 colspan=1>14</td><td rowspan=1 colspan=1>项目投资财务内部收益率（所得税前）</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>5.42</td></tr><tr><td rowspan=1 colspan=1>15</td><td rowspan=1 colspan=1>项目投资财务内部收益率（所得税后）</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>4.75</td></tr><tr><td rowspan=1 colspan=1>16</td><td rowspan=1 colspan=1>项目投资财务净现值（所得税前）</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>/</td></tr><tr><td rowspan=1 colspan=1>17</td><td rowspan=1 colspan=1>项目投资财务净现值（所得税后）</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>/</td></tr><tr><td rowspan=1 colspan=1>18</td><td rowspan=1 colspan=1>资本金财务内部收益率</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>6.84</td></tr><tr><td rowspan=1 colspan=1>19</td><td rowspan=1 colspan=1>资本金财务净现值</td><td rowspan=1 colspan=1>万元</td><td rowspan=1 colspan=1>275.26</td></tr><tr><td rowspan=1 colspan=1>20</td><td rowspan=1 colspan=1>总投资收益率（ROI）</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>2.87</td></tr><tr><td rowspan=1 colspan=1>21</td><td rowspan=1 colspan=1>投资利税率</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>2.08</td></tr><tr><td rowspan=1 colspan=1>22</td><td rowspan=1 colspan=1>项目资本金净利润率（ROE）</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>7. 42</td></tr><tr><td rowspan=1 colspan=1>23</td><td rowspan=1 colspan=1>资产负债率（最大值）</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>80</td></tr><tr><td rowspan=1 colspan=1>24</td><td rowspan=1 colspan=1>盈亏平衡点（生产能力利用率）</td><td rowspan=1 colspan=1>%</td><td rowspan=1 colspan=1>81.79</td></tr></table>",
+                    "pageid": 289
+                }
+            ]
+        },
+        {
+            "key": "所在地区",
+            "value": "山东",
+            "unit": "",
+            "related_contexts": [
+                {
+                    "type": "text",
+                    "text": "由图 2.1-1 可知，我国太阳能资源分布的主要特点为：太阳能的高值中心和低值中心都处在北纬 $2 2 ^ { \\circ } { \\sim } 3 5 ^ { \\circ }$ 这一带，青藏高原是高值中心，四川盆地是低值中心；太阳年辐射总量，西部地区高于东部地区，除西藏和新疆两个自治区外，基本上是南部低于北部；由于南方多数地区云多雨多，在北纬 $3 0 ^ { \\circ } { \\sim } 4 0 ^ { \\circ }$ 地区，太阳能的分布情况与一般的太阳能随纬度而变化的规律相反，太阳能不是随着纬度的增加而减少，而是随着纬度的升高而增长。",
+                    "pageid": 21
+                },
+                {
+                    "type": "text",
+                    "text": "本项目建设地点位于山东省诸城市密州街道、辛兴镇、林家村镇、高新技术产业园5境内。",
+                    "pageid": 142
+                },
+                {
+                    "type": "text",
+                    "text": "综上所述，本光伏电站工程项目的开发，不仅是该地区能源供应的有效补充，而且作为绿色电能，有利于缓解该地区电力工业的环境保护压力，促进地区经济的持续发展，对于带动地方经济快速发展将起到积极作用，项目社会效益显著。",
+                    "pageid": 247
+                },
+                {
+                    "type": "text",
+                    "text": "2.生活区位南侧，主要包括综合楼、仓库及危废间、综合水泵房等；生产区位于北侧，包括主变压器、35KV 预制舱、SVG、二次设备预制舱、GIS 设备、架构、站用电预制舱、接地变、站变、避雷针、事故油池和储能装置等。",
+                    "pageid": 286
+                },
+                {
+                    "type": "text",
+                    "text": "根据相关文献统计得出，发现多数地区 NASA的数据偏大，仅有 19个地区数据偏小，主要集中在西部，特别是西藏拉萨，要比1961\\~1980 年实际测量的数据小 $24 \\%$ ，也比1982\\~2000年实际测量的记录小 $9 \\%$ ，鉴于NASA数据与实际观测到的数据偏差较大，因此，本项目不宜采用 NASA数据。",
+                    "pageid": 33
+                },
+                {
+                    "type": "text",
+                    "text": "本工程场址位于位于潍坊市诸城市密州街道、辛兴镇、林家村镇、高新技术产业园境内，东经 $1 1 9 ^ { \\circ } 3 3 ^ { \\prime } 2 2 ^ { \\prime \\prime }$ ，北纬 $3 5 ^ { \\circ } 5 9 ^ { \\prime } 4 4 ^ { \\prime \\prime }$ ，项目本期建设装机容量91.8MW，一次建成。新建一座 $2 2 0 \\mathrm { k V }$ 升压站。",
+                    "pageid": 173
+                },
+                {
+                    "type": "text",
+                    "text": "非晶薄膜太阳电池除了薄膜厚度非常薄、只需少量的原料等因素而使得电池组件的价格较晶体硅太阳电池便宜外，其弱光发电性能和功率温度系数较晶体硅太阳电池好，相比同等条件下晶体硅电池可多发电。根据目前世界各国薄膜太阳电池的应用情况来看，薄膜太阳电池为主流产品尤其在土地资源丰富地区的工程上得到了广泛应用。",
+                    "pageid": 47
+                },
+                {
+                    "type": "text",
+                    "text": "参照《山东电力系统污区分布图》，线路所经地区为d级污秽区。考虑到本工程所在地区污区的扩展性和地方发展情况，本工程按d级污秽区取上限值设计，爬电比距不小于 $4 . 0 \\mathrm { c m / k V } .$ 。对于复合绝缘子，其爬电距离不小于盘型绝缘子的3/4，且不小于 $2 . 8 \\mathrm { c m / k V }$ 。",
+                    "pageid": 136
+                },
+                {
+                    "type": "text",
+                    "text": "山东省各地太阳总辐射量因地区差异较大，其中胶东半岛南部太阳总辐射量较小，北部蓬莱、龙口一带较大，呈现出南少北多的特点，鲁北垦利、河口一带太阳总辐射量较大，鲁西南、鲁西一带较小，该地区夏季云量较多，对太阳总辐射的影响显著。鲁东南和鲁西南年太阳总辐射量较接近，山东西部年太阳总辐射量呈现出明显的南少北多特征。",
+                    "pageid": 22
+                },
+                {
+                    "type": "text",
+                    "text": "本项目升压站位于山东省潍坊市诸城市东部，东距诸城市中心约 $1 1 \\mathrm { k m }$ ，西北方向距潍坊市中心约 $8 2 \\mathrm { k m }$ 。站址向东为S220省道，北侧紧邻 $5 \\mathrm { m }$ 宽水泥混凝土道路，站址周边交通便利，区域发展优势明显。",
+                    "pageid": 13
+                }
+            ]
+        }
+    ],
+    "doc": "解析出的 markdown 全文。和 related_contexts 字段中的文本完全一致"
+}

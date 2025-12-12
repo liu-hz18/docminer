@@ -1,0 +1,1 @@
+Instruct: 完成信息检索任务，从文本中召回出和 Query 最相关的段落。\nQuery:{query}

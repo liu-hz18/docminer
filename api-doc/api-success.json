@@ -1,0 +1,21 @@
+# post 请求
+# /v1/process-document
+
+# args:
+#  task: str, required, one of ["guangfu", "fengdian"]
+#  uuid: str,
+#  file: formdata
+
+# return:
+{
+    "code": 200,
+    "status": "accepted",
+    "message": "task enqueued",
+    "data": {
+        "uuid": "5da7f326c9c3421093485690b5c5256f",
+        "task": "guangfu",
+        "filename": "诸城绿电新能源有限公司国家电投山东诸城密州光伏发电项目.pdf",
+        "queue_count": 1,
+        "position_in_queue": 0
+    }
+}

@@ -1,0 +1,17 @@
+# post 请求
+# /v1/process-document
+
+# args:
+#  task: str, required, one of ["guangfu", "fengdian"]
+#  uuid: str,
+#  file: formdata
+
+# return:
+{
+    "code": 500,
+    "status": "failed",
+    "message": "error message",
+    "data": {
+        "uuid": "5da7f326c9c3421093485690b5c5256f"
+    }
+}
