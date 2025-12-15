@@ -327,11 +327,13 @@ async def health_check():
 
 
 @app.on_event("startup")
-async def shutdown_event():
+async def startup_event():
+    print(f"origin env: {os.environ.get('ASCEND_RT_VISIBLE_DEVICES', '')=}")
     await load_llms(CONFIG["llm"])
 
 @app.on_event("shutdown")  # "startup" 对应启动时，"shutdown" 对应退出时
 async def shutdown_event():
+    print(f"cleanning up service.")
     await clean_up()
 
 

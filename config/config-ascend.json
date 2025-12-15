@@ -47,7 +47,7 @@
             "lang": "ch",
             "parse_method": "auto",
             "vram_size": 32,
-            "device": "4"
+            "device": "0"
         },
         "query_optimize": {
             "model": "chat",

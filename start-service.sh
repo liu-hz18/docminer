@@ -6,7 +6,7 @@ chmod -R 777 /app/output /app/config /app/source
 
 # 2. 启动8000端口主服务（后台运行，但通过wait监控）
 echo "启动主服务（8000端口）..."
-ASCEND_RT_VISIBLE_DEVICES=4,5,6,7 uvicorn source.api:app --host 0.0.0.0 --port 8000 --reload --reload-dir source --reload-dir config &
+uvicorn source.api:app --host 0.0.0.0 --port 8000 --reload --reload-dir source --reload-dir config &
 MAIN_PID=$!  # 记录主服务进程ID
 
 # 3. 启动8001端口回调服务（后台运行，监控进程ID）
