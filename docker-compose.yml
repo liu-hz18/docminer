@@ -58,7 +58,7 @@ services:
       - VLLM_ASCEND_ENABLE_DENSE_OPTIMIZE=1
       - VLLM_ASCEND_ENABLE_PREFETCH_MLP=1
       - VLLM_USE_V1=1
-      - PYTORCH_NPU_ALLOC_CONF=max_split_size_mb:256
+      - PYTORCH_NPU_ALLOC_CONF=expandable_segments:true,max_split_size_mb:6144
     networks:
       - docminer-network
     restart: unless-stopped

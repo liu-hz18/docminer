@@ -13,7 +13,13 @@ from .engine.pipeline import (
     setup_logger,
 )
 from .engine.llmhub import load_llms
-from .engine.utils import sanitize_filename, get_string_hash, clean_up
+from .engine.utils import (
+    sanitize_filename,
+    get_string_hash,
+    clean_up,
+    print_lib_versions,
+    print_all_env_vars,
+)
 
 
 # 配置常量
@@ -310,7 +316,7 @@ async def get_task_status(uuid: str):
         "data": {
             "uuid": uuid,
             "position_in_queue": task_ahead,  # 核心：前面的任务数
-            "status": task_status,     # 任务当前状态
+            "status": task_status,  # 任务当前状态
             "pending_tasks": len(queue_copy),
             "running_tasks": len(running_copy),
             "total_tasks": len(queue_copy) + len(running_copy),
@@ -328,8 +334,11 @@ async def health_check():
 
 @app.on_event("startup")
 async def startup_event():
+    print_all_env_vars()
+    print_lib_versions()
     print(f"origin env: {os.environ.get('ASCEND_RT_VISIBLE_DEVICES', '')=}")
     await load_llms(CONFIG["llm"])
+
 
 @app.on_event("shutdown")  # "startup" 对应启动时，"shutdown" 对应退出时
 async def shutdown_event():

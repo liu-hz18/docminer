@@ -24,6 +24,62 @@ from .llmhub import clean_llm
 HASH_ALGO = "md5"
 
 
+def print_lib_versions():
+    # 1. 获取 PyTorch 版本
+    try:
+        import torch
+        torch_version = torch.__version__
+        # 额外输出 PyTorch 编译信息（可选，确认是否适配 NPU）
+        torch_build_info = torch.__config__.show() if hasattr(torch.__config__, "show") else "无编译信息"
+    except ImportError:
+        torch_version = "未安装 PyTorch"
+        torch_build_info = ""
+
+    # 2. 获取 vllm 版本
+    try:
+        import vllm
+        vllm_version = vllm.__version__
+    except ImportError:
+        vllm_version = "未安装 vllm"
+
+    # 3. 获取 torch_npu 版本（昇腾 NPU 适配库）
+    try:
+        import torch_npu
+        # 方式1：直接获取版本（推荐，适配多数版本）
+        torch_npu_version = torch_npu.__version__
+    except ImportError:
+        torch_npu_version = "未安装 torch_npu"
+
+    # 打印版本信息（格式化输出，清晰易读）
+    print("=" * 50)
+    print("Python 库版本信息：")
+    print("=" * 50)
+    print(f"PyTorch (torch) 版本: {torch_version}")
+    if torch_build_info:
+        print(f"PyTorch 编译信息: \n{torch_build_info}")
+    print(f"vllm 版本: {vllm_version}")
+    print(f"torch_npu 版本: {torch_npu_version}")
+    print("=" * 50)
+
+
+def print_all_env_vars():
+    # 获取所有环境变量并按键名排序
+    env_vars = sorted(os.environ.items(), key=lambda x: x[0])
+    
+    print("=" * 80)
+    print("系统环境变量列表（按键名排序）")
+    print("=" * 80)
+    
+    # 遍历输出（每行一个变量，超长值截断显示）
+    for idx, (key, value) in enumerate(env_vars, 1):
+        # 截断超长值（避免一行过长）
+        truncated_value = value if len(value) <= 100 else f"{value[:100]}..."
+        print(f"{idx:3d}. {key:<30} = {truncated_value}")
+    
+    print("=" * 80)
+    print(f"总计环境变量数量：{len(env_vars)}")
+
+
 def get_file_hash(file_path, hash_algorithm=HASH_ALGO):
     """计算文件的哈希值"""
     hash_obj = hashlib.new(hash_algorithm)
