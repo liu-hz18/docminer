@@ -37,7 +37,7 @@ def optimize_query(queries: List, config: Dict) -> List:
         pos = output.find(END_THINK)
         output = output[pos + len(END_THINK) :] if pos != -1 else output
         output = output.strip("\n").strip().split("\n\n")[0]
-        output = output.replace("优化后的query: ", "").strip("\n").strip()
+        output = output.replace("优化后的query：", "").strip("\n").strip()
         queries[idx]["keyword_query"] = output
 
     # optimize embedding prompt
@@ -58,7 +58,7 @@ def optimize_query(queries: List, config: Dict) -> List:
         pos = output.find(END_THINK)
         output = output[pos + len(END_THINK) :] if pos != -1 else output
         output = output.strip("\n").strip().split("\n\n")[0]
-        output = output.replace("优化后的query: ", "").strip("\n").strip()
+        output = output.replace("优化后的query：", "").strip("\n").strip()
         queries[idx]["embedding_query"] = output
 
     # optimize LLM prompt
@@ -79,7 +79,7 @@ def optimize_query(queries: List, config: Dict) -> List:
         pos = output.find(END_THINK)
         output = output[pos + len(END_THINK) :] if pos != -1 else output
         output = output.strip("\n").strip().split("\n\n")[0]
-        output = output.replace("优化后的query: ", "").strip("\n").strip()
+        output = output.replace("优化后的query：", "").strip("\n").strip()
         queries[idx]["llm_query"] = output
 
     return queries
