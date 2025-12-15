@@ -13,8 +13,8 @@ services:
     privileged: false
     volumes:
       # 挂载系统时间
-      - /etc/localtime:/etc/localtime:ro  # ro=只读，避免容器修改主机文件
       - /etc/timezone:/etc/timezone:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       # GL库文件挂载（只读）
       - /lib/aarch64-linux-gnu/libGLdispatch.so.0:/lib/aarch64-linux-gnu/libGLdispatch.so.0:ro
       - /lib/aarch64-linux-gnu/libGLX_mesa.so.0:/lib/aarch64-linux-gnu/libGLX_mesa.so.0:ro
