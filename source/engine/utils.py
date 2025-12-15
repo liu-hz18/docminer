@@ -5,6 +5,10 @@ import os
 import gc
 import torch
 from typing import Tuple
+from vllm.distributed.parallel_state import (
+    destroy_distributed_environment,
+    destroy_model_parallel,
+)
 
 try:
     import torch_npu
@@ -13,6 +17,8 @@ try:
     #     torch_npu.npu.init()
 except ImportError:
     pass
+
+from .llmhub import clean_llm
 
 
 HASH_ALGO = "md5"
@@ -45,7 +51,7 @@ def sanitize_filename(filename: str) -> str:
 
 
 def get_device() -> str:
-    device_mode = os.getenv('DEVICE_TYPE', None)
+    device_mode = os.getenv("DEVICE_TYPE", None)
     if device_mode is not None:
         return str(device_mode)
     else:
@@ -74,7 +80,7 @@ def init_seed(seed: int):
     if torch.cuda.is_available():
         torch.cuda.manual_seed(seed)
         torch.cuda.manual_seed_all(seed)
-    
+
     try:
         if torch_npu.npu.is_available():
             torch_npu.npu.manual_seed(seed)
@@ -86,10 +92,10 @@ def init_seed(seed: int):
     torch.backends.cudnn.benchmark = False
 
 
-def clean_memory(device: str=None) -> None:
+def clean_memory(device: str = None) -> None:
     if not device:
         device = get_device()
-    if device == 'cuda':
+    if device == "cuda":
         if torch.cuda.is_available():
             torch.cuda.empty_cache()
             torch.cuda.ipc_collect()
@@ -106,6 +112,7 @@ def get_device_count() -> int:
     if device.startswith("npu"):
         try:
             import torch_npu
+
             return torch_npu.npu.device_count()
         except Exception as _:
             pass
@@ -119,14 +126,16 @@ def get_vram(device) -> Tuple[int, int]:
         device_type = get_device()
         device = f"{device_type}:{device}"
     if torch.cuda.is_available() and str(device).startswith("cuda"):
-        total_memory = torch.cuda.get_device_properties(device).total_memory / (1024 ** 3)
-        used_memory = torch.cuda.memory_allocated(device) / (1024 ** 3)
-        cached_memory = torch.cuda.memory_reserved(device) / (1024 ** 3)
+        total_memory = torch.cuda.get_device_properties(device).total_memory / (1024**3)
+        used_memory = torch.cuda.memory_allocated(device) / (1024**3)
+        cached_memory = torch.cuda.memory_reserved(device) / (1024**3)
         return total_memory, used_memory, cached_memory
     elif str(device).startswith("npu"):
-        total_memory = torch_npu.npu.get_device_properties(device).total_memory / (1024 ** 3)
-        used_memory = torch_npu.npu.memory_allocated(device) / (1024 ** 3)
-        cached_memory = torch_npu.npu.memory_reserved(device) / (1024 ** 3)
+        total_memory = torch_npu.npu.get_device_properties(device).total_memory / (
+            1024**3
+        )
+        used_memory = torch_npu.npu.memory_allocated(device) / (1024**3)
+        cached_memory = torch_npu.npu.memory_reserved(device) / (1024**3)
         return total_memory, used_memory, cached_memory
     else:
         return None, None, None
@@ -135,58 +144,56 @@ def get_vram(device) -> Tuple[int, int]:
 def extract_table_text(html_str):
     """
     从表格HTML字符串中提取纯文本，单元格用|分隔，行用换行符分隔
-    
+
     参数:
         html_str (str): 表格的HTML表示字符串（支持含colspan/rowspan等属性）
-    
+
     返回:
         str: 格式化后的纯文本结果
     """
     # 初始化BeautifulSoup解析器（处理HTML标签）
-    soup = BeautifulSoup(html_str, 'html.parser')
-    
+    soup = BeautifulSoup(html_str, "html.parser")
+
     # 定位表格标签，无表格则返回空字符串
-    table = soup.find('table')
+    table = soup.find("table")
     if not table:
         return ""
-    
+
     # 存储每行的格式化文本
     row_results = []
-    
+
     # 遍历表格的每一行
-    for tr in table.find_all('tr'):
+    for tr in table.find_all("tr"):
         # 提取当前行的所有单元格（td=内容，th=表头）
         cells = []
-        for cell in tr.find_all(['td', 'th']):
+        for cell in tr.find_all(["td", "th"]):
             # 提取单元格文本并清理首尾空白
             cell_text = cell.get_text(strip=True)
             # 替换内部多余空白（换行/制表符/多个空格→单个空格）
-            cell_text = re.sub(r'\s+', ' ', cell_text)
+            cell_text = re.sub(r"\s+", " ", cell_text)
             cells.append(cell_text)
-        
+
         # 单元格间用|连接，添加到行结果列表
-        row_results.append('|'.join(cells))
-    
+        row_results.append("|".join(cells))
+
     # 行之间用换行符连接，返回最终结果
-    return '\n'.join(row_results)
+    return "\n".join(row_results)
 
 
-DEFAULT_VLLM_KWARGS = {
-    "tensor_parallel_size": 1,
-    "gpu_memory_utilization": 0.9,
-    "dtype": "bfloat16",
-    "max_num_batched_tokens": 14336,
-    "max_num_seqs": 64,
-    "disable_log_stats": True,
-    # "trust_remote_code": True,
-    "max_model_len": 14336,
-    "enable_prefix_caching": False,
-    "enable_chunked_prefill": False,
-    "enforce_eager": False,
-}
+async def clean_up():
+    print(f"cleanning up gpu allocations.")
+    clean_llm()
+    destroy_model_parallel()
+    destroy_distributed_environment()
+    gc.collect()
+    try:
+        import torch_npu
+        torch.npu.empty_cache()
+    except Exception as _:
+        pass
+    print(f"[SUCCESS] clean up finished.")
 
 
 if __name__ == "__main__":
-    temp = "<table><tr><td colspan=\"1\" rowspan=\"1\">方案类型</td><td colspan=\"1\" rowspan=\"1\">变化幅度</td><td colspan=\"1\" rowspan=\"1\">投资回收期所得税后（年）</td><td colspan=\"1\" rowspan=\"1\">项目投资财务内部收益率（所得税前）%）</td><td colspan=\"1\" rowspan=\"1\">项目投资财务内部收益率（所得税后）%）</td><td colspan=\"1\" rowspan=\"1\">资本金财务内部收益率（%）</td><td colspan=\"1\" rowspan=\"1\">项目投资财务净现值（所得税后）（万元）</td><td colspan=\"1\" rowspan=\"1\">资本金财务净现值（万元）</td><td colspan=\"1\" rowspan=\"1\">总投资收益率(RO1）(%)</td><td colspan=\"1\" rowspan=\"1\">投资利税率）</td><td colspan=\"1\" rowspan=\"1\">项目资本金净利润率（ROE）(%)</td><td colspan=\"1\" rowspan=\"1\">GR(%）</td></tr><tr><td colspan=\"1\" rowspan=\"9\">建设投资变化分析（%）（其中包含建设期土地租金1年和运营期土地租金9年）</td></td></tr></table>"
+    temp = '<table><tr><td colspan="1" rowspan="1">方案类型</td><td colspan="1" rowspan="1">变化幅度</td><td colspan="1" rowspan="1">投资回收期所得税后（年）</td><td colspan="1" rowspan="1">项目投资财务内部收益率（所得税前）%）</td><td colspan="1" rowspan="1">项目投资财务内部收益率（所得税后）%）</td><td colspan="1" rowspan="1">资本金财务内部收益率（%）</td><td colspan="1" rowspan="1">项目投资财务净现值（所得税后）（万元）</td><td colspan="1" rowspan="1">资本金财务净现值（万元）</td><td colspan="1" rowspan="1">总投资收益率(RO1）(%)</td><td colspan="1" rowspan="1">投资利税率）</td><td colspan="1" rowspan="1">项目资本金净利润率（ROE）(%)</td><td colspan="1" rowspan="1">GR(%）</td></tr><tr><td colspan="1" rowspan="9">建设投资变化分析（%）（其中包含建设期土地租金1年和运营期土地租金9年）</td></td></tr></table>'
     print(extract_table_text(temp))
-

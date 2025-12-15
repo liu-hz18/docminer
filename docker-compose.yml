@@ -4,11 +4,13 @@ networks:
 
 services:
   llm-api-service:
+    # docker image contains Ascend-cann-toolkit、Ascend-cann-kernels-910b、Ascend-cann-nnal
+    # we only need Ascend driver and firmware.
     image: vllm-ascend:v1
     container_name: docminer-vllm-ascend
     ports:
       - "8000:8000" # 宿主机:容器端口（uvicorn 服务端口）
-    privileged: true
+    privileged: false
     volumes:
       # 挂载系统时间
       - /etc/localtime:/etc/localtime:ro  # ro=只读，避免容器修改主机文件
@@ -20,14 +22,12 @@ services:
       - /lib/aarch64-linux-gnu/libGL.so.1:/lib/aarch64-linux-gnu/libGL.so.1:ro
       - /lib/aarch64-linux-gnu/libglapi.so.0:/lib/aarch64-linux-gnu/libglapi.so.0:ro
       # Ascend NPU 驱动/工具链（只读）
-      - /usr/local/Ascend/driver:/usr/local/Ascend/driver:ro
-      - /usr/local/Ascend/add-ons:/usr/local/Ascend/add-ons:ro
-      - /usr/local/Ascend/toolkit:/usr/local/Ascend/toolkit:ro
-      - /usr/local/sbin:/usr/local/sbin:ro
-      # Ascend 日志/配置
-      - /var/log/npu:/var/log/npu
-      - /var/log/npu:/usr/slog
-      - /etc/hccn.conf:/etc/hccn.conf
+      - /root/.cache:/root/.cache
+      - /usr/local/dcmi:/usr/local/dcmi
+      - /usr/local/bin/npu-smi:/usr/local/bin/npu-smi
+      - /usr/local/Ascend/driver/tools/hccn_tool:/usr/local/Ascend/driver/tools/hccn_tool
+      - /usr/local/Ascend/driver/lib64/:/usr/local/Ascend/driver/lib64/
+      - /usr/local/Ascend/driver/version.info:/usr/local/Ascend/driver/version.info
       - /etc/ascend_install.info:/etc/ascend_install.info
       # 业务目录持久化（宿主机相对路径 → 容器内路径）
       - /home/docminer/output:/app/output:rw # /app/output 持久化
@@ -55,6 +55,10 @@ services:
       - DOCMINER_BACKEND=npu
       - VLLM_WORKER_MULTIPROC_METHOD=spawn
       - HCCL_OP_EXPANSION_MODE=AIV
+      - VLLM_ASCEND_ENABLE_DENSE_OPTIMIZE=1
+      - VLLM_ASCEND_ENABLE_PREFETCH_MLP=1
+      - VLLM_USE_V1=1
+      - PYTORCH_NPU_ALLOC_CONF=max_split_size_mb:256
     networks:
       - docminer-network
     restart: unless-stopped

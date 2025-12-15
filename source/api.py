@@ -13,7 +13,7 @@ from .engine.pipeline import (
     setup_logger,
 )
 from .engine.llmhub import load_llms
-from .engine.utils import sanitize_filename, get_string_hash
+from .engine.utils import sanitize_filename, get_string_hash, clean_up
 
 
 # 配置常量
@@ -35,7 +35,6 @@ app = FastAPI(title="文档处理API", version="1.0")
 # 加载系统配置（全局初始化）
 CONFIG = load_sys_configs(CONFIG_PATH)
 setup_environment(CONFIG)
-load_llms(CONFIG["llm"])
 
 # -------------------------- 任务队列核心配置 --------------------------
 # 任务排队列表（按顺序存储UUID，线程安全锁保护）
@@ -327,9 +326,18 @@ async def health_check():
     }
 
 
+@app.on_event("startup")
+async def shutdown_event():
+    await load_llms(CONFIG["llm"])
+
+@app.on_event("shutdown")  # "startup" 对应启动时，"shutdown" 对应退出时
+async def shutdown_event():
+    await clean_up()
+
+
 if __name__ == "__main__":
     import uvicorn
 
     print(f"{backend=} {CONFIG_PATH=}")
     # 启动API服务
-    uvicorn.run(app="api:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app="api:app", host="0.0.0.0", port=8000)

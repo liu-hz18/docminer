@@ -41,3 +41,14 @@ pip install mineru==2.6.6
 pip install accelerate doclayout_yolo ultralytics ftfy shapely pyclipper omegaconf
 pip install json5 jieba rank_bm25
 ```
+
+# 硬件环境
+Ascend-hdk-910b-npu-driver_25.3.rc1_linux-aarch64.run
+Ascend-hdk-910b-npu-firmware_7.8.0.2.212.run
+
+# huawei ascend npu firmware and driver community version download
+https://www.hiascend.com/hardware/firmware-drivers/community
+
+
+尝试了但失败的命令：
+./Ascend-hdk-xxx-npu-driver_25.3.rc1_linux-aarch64.run --full --install-for-all --install-path=/usr/local/Ascend-25.3.rc1

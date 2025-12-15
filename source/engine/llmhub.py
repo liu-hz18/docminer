@@ -3,7 +3,7 @@ import os
 __llmhub = {}
 __llmhub_device = {}
 
-def load_llms(config: dict) -> None:
+async def load_llms(config: dict) -> None:
     global __llmhub
     __llmhub = {}  # clear LLM cache
     for k, model_conf in config.items():
@@ -15,6 +15,7 @@ def load_llms(config: dict) -> None:
         __llmhub[k] = LLM(
             **model_conf
         )
+    print(F"[SUCCESS] llm loaded.")
 
 def get_llm(key: str):
     global __llmhub
@@ -23,3 +24,10 @@ def get_llm(key: str):
         os.environ["ASCEND_RT_VISIBLE_DEVICES"] = device
         return __llmhub[key]
     raise ValueError(f"llm '{key}' not in llmhub. available keys are {list(__llmhub.keys())}")
+
+
+def clean_llm():
+    del __llmhub_device
+    del __llmhub
+    __llmhub_device = {}
+    __llmhub = {}

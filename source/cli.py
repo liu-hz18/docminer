@@ -11,6 +11,8 @@ from .engine.pipeline import (
     setup_logger,
 )
 from .engine.llmhub import load_llms
+from .engine.utils import clean_up
+
 
 # 可用任务列表
 AVAILABLE_TASK = ["guangfu", "fengdian"]
@@ -101,8 +103,8 @@ if __name__ == "__main__":
 
     # 3. 系统初始化
     config = load_sys_configs(args.config_path)
-    load_llms(config["llm"])
     setup_environment(config)
+    load_llms(config["llm"])
     config["uuid"] = cli_uuid
     setup_logger(config)
     logger.info(
@@ -114,3 +116,5 @@ if __name__ == "__main__":
     main(task=args.task, document=args.pdf, config=config, uuid=cli_uuid)
 
     logger.info(f"所有文档处理完成 | UUID: {cli_uuid}")
+
+    clean_up()

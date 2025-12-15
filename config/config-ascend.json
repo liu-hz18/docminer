@@ -19,7 +19,7 @@
             "enable_chunked_prefill": false,
             "enforce_eager": false,
             "seed": 2025,
-            "device": "5,6"
+            "device": "1,2"
         },
         "embedding": {
             "model": "/models/qwen3-embedding-8b",
@@ -35,7 +35,7 @@
             "enforce_eager": false,
             "seed": 2025,
             "task": "embed",
-            "device": "7"
+            "device": "3"
         }
     },
     "pipeline": {

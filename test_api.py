@@ -19,7 +19,7 @@ api_url = "http://localhost:8000/v1/process-document"
 
 # 构造请求参数（Form + File）
 files = {
-    "file": open("./documents/test1.pdf", "rb")  # 替换为你的测试文件路径
+    "file": open("./documents/test2.pdf", "rb")  # 替换为你的测试文件路径
 }
 data = {
     "task": "guangfu",
