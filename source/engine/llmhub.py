@@ -27,6 +27,7 @@ def get_llm(key: str):
 
 
 def clean_llm():
+    global __llmhub_device, __llmhub
     del __llmhub_device
     del __llmhub
     __llmhub_device = {}

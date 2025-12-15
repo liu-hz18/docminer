@@ -19,7 +19,7 @@ RUN python3 -m pip install -U pip -i https://mirrors.aliyun.com/pypi/simple && \
     # 安装基础依赖
     python3 -m pip install \
         accelerate doclayout_yolo ultralytics ftfy shapely pyclipper omegaconf \
-        json5 jieba rank_bm25 vllm vllm-ascend uvicorn \
+        json5 jieba rank_bm25 vllm vllm-ascend triton-ascend torch==2.8.0 torch-npu==2.8.0 uvicorn \
         -i https://mirrors.aliyun.com/pypi/simple && \
     # 安装 mineru 及指定版本依赖
     python3 -m pip install \

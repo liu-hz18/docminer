@@ -225,6 +225,7 @@ async def process_document_api(
 
         # 创建文件夹并写入文件
         os.makedirs(folder_path, exist_ok=True)
+        logger.info(f"create dir: {folder_path} {os.path.exists(folder_path)}")
         with open(file_path, "wb") as f:
             f.write(file_content)
 
@@ -233,7 +234,8 @@ async def process_document_api(
         )
 
     except Exception as e:
-        logger.error(f"临时文件保存失败 | UUID: {uuid} | 异常: {str(e)}")
+        import traceback
+        logger.error(f"临时文件保存失败 | UUID: {uuid} | 异常: {str(e)}\n{traceback.format_exc()}")
         # 清理已创建的文件夹（如果有）
         if folder_path and os.path.exists(folder_path):
             try:
