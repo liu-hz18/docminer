@@ -31,11 +31,11 @@ services:
       - /etc/ascend_install.info:/etc/ascend_install.info
       # 业务目录持久化（宿主机相对路径 → 容器内路径）
       - /home/docminer/output:/app/output:rw # /app/output 持久化
-      - /home/docminer/models:/models:ro # /models 持久化（与参考示例路径一致）
       - /home/docminer/config:/app/config:rw # /app/config 持久化
       - /home/docminer/source:/app/source:rw # /app/source 持久化（匹配 reload 目录）
       - /home/docminer/documents:/app/documents:ro # /app/source 持久化（匹配 reload 目录）
       - /home/docminer/start-service.sh:/app/start-service.sh
+      - /data/liuhongzun/models:/models:ro # /models 持久化（与参考示例路径一致）
     devices:
       # NPU 设备映射（根据实际可用设备调整编号）
       - /dev/davinci4:/dev/davinci4:rwm
