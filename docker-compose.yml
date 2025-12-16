@@ -6,7 +6,7 @@ services:
   llm-api-service:
     # docker image contains Ascend-cann-toolkit、Ascend-cann-kernels-910b、Ascend-cann-nnal
     # we only need Ascend driver and firmware.
-    image: vllm-ascend:v1
+    image: vllm-ascend:v1.1
     container_name: docminer-vllm-ascend
     ports:
       - "8000:8000" # 宿主机:容器端口（uvicorn 服务端口）
