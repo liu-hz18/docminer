@@ -52,3 +52,6 @@ https://www.hiascend.com/hardware/firmware-drivers/community
 
 尝试了但失败的命令：
 ./Ascend-hdk-xxx-npu-driver_25.3.rc1_linux-aarch64.run --full --install-for-all --install-path=/usr/local/Ascend-25.3.rc1
+
+# windows 管理员模式下创建软连接
+mklink /d "./models" "D:/models"
