@@ -29,11 +29,6 @@ if backend == "npu":
     CONFIG_PATH = r"/app/config/config-ascend.json"
 else:
     CONFIG_PATH = r"/mnt/c/Users/Administrator/Desktop/docminer/config/config.json"
-# 回调接口配置（请替换为实际回调地址）
-CALLBACK_URL_PROCESS_DOC = (
-    "http://localhost:8001/receive-callback"  # 第一次回调（文件）
-)
-
 
 # 初始化FastAPI应用
 app = FastAPI(title="文档处理API", version="1.0")
@@ -95,7 +90,6 @@ async def process_document_background(
     uuid: str,
     file_path: str,
     filename: str,
-    callback_url: str,
     config: dict,
 ):
     """带串行控制的后台任务核心逻辑"""
@@ -182,6 +176,7 @@ async def process_document_background(
                 logger.info(f"UUID出队 | {uuid} | 剩余队列长度: {len(TASK_QUEUE_LIST)}")
 
     # 5. 执行回调（单独捕获异常，不影响核心流程）
+    callback_url = config["callback_url"]
     try:
         if callback_data:
             callback_api(callback_url, callback_data)
@@ -263,7 +258,6 @@ async def process_document_api(
         uuid=uuid,
         file_path=file_path,
         filename=file.filename,
-        callback_url=CALLBACK_URL_PROCESS_DOC,
         config=CONFIG,
     )
 

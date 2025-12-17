@@ -5,6 +5,7 @@
     "query": {
         "path": "/app/config/{task}/query.json"
     },
+    "callback_url": "http://localhost:8001/receive-callback",
     "llm": {
         "chat": {
             "model": "/models/qwen3-32b",
