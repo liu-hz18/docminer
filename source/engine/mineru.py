@@ -6,8 +6,8 @@ from mineru.cli.common import do_parse, read_fn
 
 def parse_doc(input_path_list: list[Path], output_dir: Path, config: dict):
     old_device = os.environ.get("ASCEND_RT_VISIBLE_DEVICES", "")
-    os.environ["ASCEND_RT_VISIBLE_DEVICES"] = config['device']
-    print(F"ASCEND_RT_VISIBLE_DEVICES={os.environ['ASCEND_RT_VISIBLE_DEVICES']}")
+    os.environ["ASCEND_RT_VISIBLE_DEVICES"] = config["device"]
+    print(f"ASCEND_RT_VISIBLE_DEVICES={os.environ['ASCEND_RT_VISIBLE_DEVICES']}")
     lang = config["lang"]
     backend = config["backend"]
     parse_method = config["parse_method"]

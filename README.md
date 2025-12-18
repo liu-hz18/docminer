@@ -61,9 +61,3 @@ export MODELSCOPE_DOMAIN=www.modelscope.ai
 modelscope download --model zai-org/GLM-4.6 --local_dir ./models/glm-4.6
 modelscope download --model zai-org/GLM-4-32B-0414 --local_dir ./models/glm-4-32b-0414
 modelscope download --model zai-org/GLM-4.5-Air --local_dir ./models/glm-4.5-air
-
-
-TODO:
-1. 制度文件意见收集
-2. glm 模型下载、上传和部署
-3. 造价指标的json编写

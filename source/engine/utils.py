@@ -12,6 +12,7 @@ from vllm.distributed.parallel_state import (
 
 try:
     import torch_npu
+
     # NOTE: 多进程 (vllm 有一个 engine 会负责管理和调用模型分片) 的时候，npu 不能 init。vllm 会在子进程自动 init
     # if not torch_npu.npu.is_initialized():
     #     torch_npu.npu.init()
@@ -28,9 +29,14 @@ def print_lib_versions():
     # 1. 获取 PyTorch 版本
     try:
         import torch
+
         torch_version = torch.__version__
         # 额外输出 PyTorch 编译信息（可选，确认是否适配 NPU）
-        torch_build_info = torch.__config__.show() if hasattr(torch.__config__, "show") else "无编译信息"
+        torch_build_info = (
+            torch.__config__.show()
+            if hasattr(torch.__config__, "show")
+            else "无编译信息"
+        )
     except ImportError:
         torch_version = "未安装 PyTorch"
         torch_build_info = ""
@@ -38,6 +44,7 @@ def print_lib_versions():
     # 2. 获取 vllm 版本
     try:
         import vllm
+
         vllm_version = vllm.__version__
     except ImportError:
         vllm_version = "未安装 vllm"
@@ -45,6 +52,7 @@ def print_lib_versions():
     # 3. 获取 torch_npu 版本（昇腾 NPU 适配库）
     try:
         import torch_npu
+
         # 方式1：直接获取版本（推荐，适配多数版本）
         torch_npu_version = torch_npu.__version__
     except ImportError:
@@ -65,17 +73,17 @@ def print_lib_versions():
 def print_all_env_vars():
     # 获取所有环境变量并按键名排序
     env_vars = sorted(os.environ.items(), key=lambda x: x[0])
-    
+
     print("=" * 80)
     print("系统环境变量列表（按键名排序）")
     print("=" * 80)
-    
+
     # 遍历输出（每行一个变量，超长值截断显示）
     for idx, (key, value) in enumerate(env_vars, 1):
         # 截断超长值（避免一行过长）
         truncated_value = value if len(value) <= 100 else f"{value[:100]}..."
         print(f"{idx:3d}. {key:<30} = {truncated_value}")
-    
+
     print("=" * 80)
     print(f"总计环境变量数量：{len(env_vars)}")
 
@@ -244,6 +252,7 @@ async def clean_up():
     gc.collect()
     try:
         import torch_npu
+
         torch.npu.empty_cache()
     except Exception as _:
         pass

@@ -10,11 +10,7 @@ gpu_available = torch.cuda.is_available()
 npu_available = hasattr(torch, "npu") and torch.npu.is_available()
 
 # 2. 采样参数（简单配置）
-sampling_params = SamplingParams(
-    temperature=0.7,
-    max_tokens=100,
-    top_p=0.95
-)
+sampling_params = SamplingParams(temperature=0.7, max_tokens=100, top_p=0.95)
 
 # 3. 加载模型（关键：适配不同设备）
 print(f"开始加载模型：{model_path}")
@@ -28,7 +24,7 @@ try:
         cpu_offload=False,  # 无GPU/NPU则CPU offload
         disable_log_stats=True,  # 关闭统计日志（简化输出）
         trust_remote_code=True,  # 自定义模型需开启（如Qwen）
-        dtype="auto"  # 自动适配精度（ARM64 建议 float16）
+        dtype="auto",  # 自动适配精度（ARM64 建议 float16）
     )
     print("✅ 模型加载成功！")
 
@@ -47,4 +43,5 @@ except Exception as e:
     print(f"❌ 模型加载/生成失败：{str(e)}")
     # 打印详细报错（便于排查）
     import traceback
+
     traceback.print_exc()

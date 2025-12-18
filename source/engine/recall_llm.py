@@ -61,9 +61,7 @@ def compute_yes_no_logprobs(
         yes_no_logprobs: [(yes_logprob, no_logprob), ...]（与原始prompt顺序一致）
     """
     # 配置采样参数：不生成新token，返回每个prompt token的top1 logprob
-    sampling_params = SamplingParams(
-        **config["generate_kwargs"]
-    )
+    sampling_params = SamplingParams(**config["generate_kwargs"])
 
     # vLLM推理（获取prompt的logprob）
     outputs = llm.generate(
