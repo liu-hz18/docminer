@@ -1,29 +1,68 @@
 {
     "output": {
-        "path": "/mnt/c/Users/Administrator/Desktop/docminer/output"
+        "path": "/app/output"
     },
     "query": {
-        "path": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/query.json"
+        "path": "/app/config/{task}/query.json"
+    },
+    "callback_url": "http://localhost:8001/receive-callback",
+    "timeout": 3600,
+    "llm": {
+        "chat-qwen3": {
+            "model": "/models/qwen3-32b",
+            "dtype": "bfloat16",
+            "tensor_parallel_size": 2,
+            "gpu_memory_utilization": 0.9,
+            "max_num_batched_tokens": 14336,
+            "max_model_len": 14336,
+            "max_num_seqs": 64,
+            "disable_log_stats": true,
+            "enable_prefix_caching": false,
+            "enable_chunked_prefill": false,
+            "enforce_eager": false,
+            "seed": 2025,
+            "device": "1,2"
+        },
+        "embedding": {
+            "model": "/models/qwen3-embedding-8b",
+            "dtype": "bfloat16",
+            "tensor_parallel_size": 1,
+            "gpu_memory_utilization": 0.9,
+            "max_num_batched_tokens": 14336,
+            "max_model_len": 14336,
+            "max_num_seqs": 64,
+            "disable_log_stats": true,
+            "enable_prefix_caching": false,
+            "enable_chunked_prefill": false,
+            "enforce_eager": false,
+            "seed": 2025,
+            "task": "embed",
+            "device": "3"
+        }
     },
     "pipeline": {
         "seed": 2025,
         "mineru": {
-            "config": "/mnt/c/Users/Administrator/Desktop/docminer/config/mineru.json",
+            "config": "/app/config/mineru-ascend.json",
             "mode": "pipeline",
             "backend": "pipeline",
             "lang": "ch",
             "parse_method": "auto",
-            "vram_size": 32
+            "vram_size": 32,
+            "device": "0"
         },
         "query_optimize": {
-            "model": "/mnt/c/Users/Administrator/Desktop/docminer/models/qwen3-8b",
-            "dtype": "bfloat16",
-            "temperature": 0.6,
-            "max_tokens": 8192,
-            "repetition_penalty": 1.0,
-            "keyword_query_prompt": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/keyword_query_prompt.txt",
-            "embedding_query_prompt": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/embedding_query_prompt.txt",
-            "llm_query_prompt": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/llm_query_prompt.txt"
+            "model": "chat-qwen3",
+            "generate_kwargs": {
+                "top_p": 0.95,
+                "temperature": 0.6,
+                "max_tokens": 8192,
+                "repetition_penalty": 1.0,
+                "skip_special_tokens": false
+            },
+            "keyword_query_prompt": "/app/config/{task}/keyword_query_prompt.txt",
+            "embedding_query_prompt": "/app/config/{task}/embedding_query_prompt.txt",
+            "llm_query_prompt": "/app/config/{task}/llm_query_prompt.txt"
         },
         "keyword_recall": {
             "model": "bm25",
@@ -32,42 +71,49 @@
             "bm25_b": 0.2
         },
         "embedding_recall": {
-            "model": "/mnt/c/Users/Administrator/Desktop/docminer/models/qwen3-embedding-8b",
+            "model": "embedding",
             "topk": 10,
-            "dtype": "bfloat16",
-            "max_length": 40960,
-            "prompt": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/embedding_match_prompt.txt"
+            "max_length": 10240,
+            "prompt": "/app/config/{task}/embedding_match_prompt.txt"
         },
         "llm_recall": {
-            "model": "/mnt/c/Users/Administrator/Desktop/docminer/models/qwen3-0.6b",
+            "model": "chat-qwen3",
             "topk": 3,
             "lower_than": 0.95,
             "batch_size": 1,
-            "temperature": 0.0,
-            "dtype": "bfloat16",
-            "max_length": 8192,
-            "prompt": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/llm_match_prompt.txt"
+            "max_length": 10240,
+            "generate_kwargs": {
+                "max_tokens": 1,
+                "prompt_logprobs": 1,
+                "skip_special_tokens": false
+            },
+            "prompt": "/app/config/{task}/llm_match_prompt.txt"
         },
         "merge_recall": {
             "topk": 10
         },
         "compress": {
-            "model": "/mnt/c/Users/Administrator/Desktop/docminer/models/qwen3-8b",
-            "temperature": 0.4,
-            "max_tokens": 8192,
-            "repetition_penalty": 1.05,
+            "model": "chat-qwen3",
             "need_compress_length": 10240,
-            "dtype": "bfloat16",
-            "prompt": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/compress_prompt.txt"
+            "generate_kwargs": {
+                "top_p": 0.95,
+                "temperature": 0.4,
+                "max_tokens": 8192,
+                "repetition_penalty": 1.05,
+                "skip_special_tokens": false
+            },
+            "prompt": "/app/config/{task}/compress_prompt.txt"
         },
         "chat": {
-            "model": "/mnt/c/Users/Administrator/Desktop/docminer/models/qwen3-8b",
-            "dtype": "bfloat16",
-            "temperature": 0.5,
-            "max_tokens": 8192,
-            "repetition_penalty": 1.1,
-            "no_repeat_ngram_size": 16,
-            "prompt": "/mnt/c/Users/Administrator/Desktop/docminer/config/{task}/chat_prompt.txt"
+            "model": "chat-qwen3",
+            "generate_kwargs": {
+                "top_p": 0.95,
+                "temperature": 0.5,
+                "max_tokens": 8192,
+                "repetition_penalty": 1.1,
+                "skip_special_tokens": false
+            },
+            "prompt": "/app/config/{task}/chat_prompt.txt"
         }
     }
 }

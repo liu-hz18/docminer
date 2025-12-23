@@ -1,9 +1,10 @@
 import re
 from loguru import logger
-from vllm import SamplingParams, LLM
+from vllm import SamplingParams
 from typing import List, Dict
 from .utils import extract_table_text
 from .llmhub import get_llm
+from .prompt import get_prompt_and_response_template
 
 
 def compress_paragraphs(
@@ -29,12 +30,11 @@ def compress_paragraphs(
     compress_prompts = []  # 需要压缩的prompt列表
     non_compress_paragraphs = []  # 不需要压缩的段落
 
-    START_TOKEN, END_TOKEN = "<|im_start|>", "<|im_end|>"
-    START_THINK, END_THINK = "<think>", "</think>"
     prompt_file = config["prompt"]
     logger.info(f"load prompt file from {prompt_file}")
     with open(prompt_file, "r", encoding="utf-8") as f:
         prompt_template = f.read()
+    prompt_func, response_func = get_prompt_and_response_template(config["prompt_template"])
 
     for idx, p in enumerate(relevant_paragraphs):
         if (
@@ -54,7 +54,8 @@ def compress_paragraphs(
             else:
                 prompt = prompt_template.replace("{document}", p["paragraph"])
             prompt = prompt.replace("{query}", query)
-            prompt = f"{START_TOKEN}system\n你是一个有用的助手\n{END_TOKEN}\n{START_TOKEN}user\n{prompt}\n{END_TOKEN}\n{START_TOKEN}assistant\n{START_THINK}\n"
+            
+            prompt = prompt_func(prompt, thinking=True)
             logger.debug(
                 f"Compress-stage prompt (length={len(prompt)}) idx={idx}: {prompt[:4096]}..."
             )
@@ -120,18 +121,11 @@ def compress_paragraphs(
 
             # 解析生成结果并回填
             for idx, output in zip(compress_indices, outputs):
-                compress_context = output.outputs[0].text.strip()
-                compress_context = compress_context.split(END_TOKEN)[0]
+                llm_response = output.outputs[0].text.strip()
+                think_response, compress_context = response_func(llm_response, thinking=True)
 
-                result[idx]["think"] = compress_context
+                result[idx]["think"] = think_response
 
-                pos = compress_context.find(END_THINK)
-                compress_context = (
-                    compress_context[pos + len(END_THINK) :]
-                    if pos != -1
-                    else compress_context
-                )
-                compress_context = compress_context.strip("\n").strip()
                 compress_context = re.sub(r" +", " ", compress_context).strip()
                 logger.debug(
                     f"Compressed context (idx={idx}, length={len(compress_context)}): {compress_context[:200]}..."

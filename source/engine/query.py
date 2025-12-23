@@ -2,6 +2,7 @@ from vllm import SamplingParams
 from typing import List, Dict
 from loguru import logger
 from .llmhub import get_llm
+from .prompt import get_prompt_and_response_template
 
 
 def optimize_query(queries: List, config: Dict) -> List:
@@ -16,70 +17,75 @@ def optimize_query(queries: List, config: Dict) -> List:
         logger.error(f"Failed to load vllm engine: {str(e)}\n{traceback.format_exc()}")
         raise
 
-    START_TOKEN, END_TOKEN = "<|im_start|>", "<|im_end|>"
-    START_THINK, END_THINK = "<think>", "</think>"
+    prompt_func, response_func = get_prompt_and_response_template(config["prompt_template"])
 
     # optimize keyword prompt
+    logger.info("Optimizing keyword queries...")
     prompts = []
     with open(config["keyword_query_prompt"], "r", encoding="utf-8") as f:
         prompt_template = f.read()
-    prompt_template = f"{START_TOKEN}system\n你是一个有用的助手\n{END_TOKEN}\n{START_TOKEN}user\n{prompt_template}\n{END_TOKEN}\n{START_TOKEN}assistant\n{START_THINK}\n"
     for query_config in queries:
         query = query_config["query"]
-        prompts.append(prompt_template.replace("{query}", query))
+        user_prompt = prompt_template.replace("{query}", query)
+        prompt = prompt_func(user_prompt, thinking=True)
+        prompts.append(prompt)
+
     outputs = llm.generate(
         prompts=prompts,
         sampling_params=sampling_params,
         use_tqdm=False,  # 可选：关闭进度条
     )
     for idx, output in enumerate(outputs):
-        output = output.outputs[0].text.strip().split(END_TOKEN)[0]
-        pos = output.find(END_THINK)
-        output = output[pos + len(END_THINK) :] if pos != -1 else output
-        output = output.strip("\n").strip().split("\n\n")[0]
-        output = output.replace("优化后的query：", "").strip("\n").strip()
+        llm_response = output.outputs[0].text.strip()
+        think_response, chat_response = response_func(llm_response, thinking=True)
+        output = chat_response.replace("优化后的query：", "").replace("优化后的query: ", "").strip("\n").strip()
+        queries[idx]["keyword_query_think"] = think_response
         queries[idx]["keyword_query"] = output
 
     # optimize embedding prompt
+    logger.info("Optimizing embedding queries...")
     prompts = []
     with open(config["embedding_query_prompt"], "r", encoding="utf-8") as f:
         prompt_template = f.read()
-    prompt_template = f"{START_TOKEN}system\n你是一个有用的助手\n{END_TOKEN}\n{START_TOKEN}user\n{prompt_template}\n{END_TOKEN}\n{START_TOKEN}assistant\n{START_THINK}\n"
     for query_config in queries:
         query = query_config["query"]
-        prompts.append(prompt_template.replace("{query}", query))
+        user_prompt = prompt_template.replace("{query}", query)
+        prompt = prompt_func(user_prompt, thinking=True)
+        prompts.append(prompt)
+
     outputs = llm.generate(
         prompts=prompts,
         sampling_params=sampling_params,
         use_tqdm=False,  # 可选：关闭进度条
     )
     for idx, output in enumerate(outputs):
-        output = output.outputs[0].text.strip().split(END_TOKEN)[0]
-        pos = output.find(END_THINK)
-        output = output[pos + len(END_THINK) :] if pos != -1 else output
-        output = output.strip("\n").strip().split("\n\n")[0]
-        output = output.replace("优化后的query：", "").strip("\n").strip()
+        llm_response = output.outputs[0].text.strip()
+        think_response, chat_response = response_func(llm_response, thinking=True)
+        output = chat_response.replace("优化后的query：", "").replace("优化后的query: ", "").strip("\n").strip()
+        queries[idx]["embedding_query_think"] = think_response
         queries[idx]["embedding_query"] = output
 
     # optimize LLM prompt
+    logger.info("Optimizing chat queries...")
     prompts = []
     with open(config["llm_query_prompt"], "r", encoding="utf-8") as f:
         prompt_template = f.read()
-    prompt_template = f"{START_TOKEN}system\n你是一个有用的助手\n{END_TOKEN}\n{START_TOKEN}user\n{prompt_template}\n{END_TOKEN}\n{START_TOKEN}assistant\n{START_THINK}\n"
     for query_config in queries:
         query = query_config["query"]
-        prompts.append(prompt_template.replace("{query}", query))
+        user_prompt = prompt_template.replace("{query}", query)
+        prompt = prompt_func(user_prompt, thinking=True)
+        prompts.append(prompt)
+
     outputs = llm.generate(
         prompts=prompts,
         sampling_params=sampling_params,
         use_tqdm=False,  # 可选：关闭进度条
     )
     for idx, output in enumerate(outputs):
-        output = output.outputs[0].text.strip().split(END_TOKEN)[0]
-        pos = output.find(END_THINK)
-        output = output[pos + len(END_THINK) :] if pos != -1 else output
-        output = output.strip("\n").strip().split("\n\n")[0]
-        output = output.replace("优化后的query：", "").strip("\n").strip()
+        llm_response = output.outputs[0].text.strip()
+        think_response, chat_response = response_func(llm_response, thinking=True)
+        output = chat_response.replace("优化后的query：", "").replace("优化后的query: ", "").strip("\n").strip()
+        queries[idx]["llm_query_think"] = think_response
         queries[idx]["llm_query"] = output
 
     return queries

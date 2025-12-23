@@ -128,10 +128,10 @@ async def process_document_background(
                         config=config,
                         uuid=uuid,
                     ),
-                    timeout=1800.0,  # 30分钟超时
+                    timeout=config["timeout"],  # 30分钟超时
                 )
             except asyncio.TimeoutError:
-                raise Exception("任务执行超时（30min）")
+                raise Exception(f"任务执行超时: {config['timeout']}s")
 
             # 4. 构造成功回调数据
             callback_data = process_result

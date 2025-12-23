@@ -1,7 +1,8 @@
 from loguru import logger
-from vllm import SamplingParams, LLM
+from vllm import SamplingParams
 from typing import List, Dict, Tuple
 from .llmhub import get_llm
+from .prompt import get_prompt_and_response_template
 
 
 def generate_refined_answer(
@@ -32,15 +33,14 @@ def generate_refined_answer(
         context += f"{i}. 段落（召回源: {p['source']}，召回路相关性分数：{p['score']:.4f}）：{p['paragraph']}\n\n"
 
     # -------------------------- 提取最终答案 --------------------------
-    START_TOKEN, END_TOKEN = "<|im_start|>", "<|im_end|>"
-    START_THINK, END_THINK = "<think>", "</think>"
     prompt_file = config["prompt"]
     logger.info(f"load prompt file from {prompt_file}")
     with open(prompt_file, "r", encoding="utf-8") as f:
         prompt_template = f.read()
     prompt = prompt_template.replace("{context}", context).replace("{query}", query)
 
-    prompt = f"{START_TOKEN}system\n你是一个有用的助手\n{END_TOKEN}\n{START_TOKEN}user\n{prompt}\n{END_TOKEN}\n{START_TOKEN}assistant\n{START_THINK}\n"
+    prompt_func, response_func = get_prompt_and_response_template(config["prompt_template"])
+    prompt = prompt_func(prompt, thinking=True)
     logger.debug(f"LLM chat prompt (length={len(prompt)}): {prompt[:4096]}...")
     result["prompt"] = prompt
 
@@ -55,29 +55,23 @@ def generate_refined_answer(
         )
 
         # 解析最终答案
-        final_answer = outputs[0].outputs[0].text.strip()
-        result["chat-answer"] = final_answer
-        logger.debug(f"LLM final answer: {final_answer}")
+        chat_answer = outputs[0].outputs[0].text.strip()
+        result["chat-answer"] = chat_answer
+        logger.debug(f"LLM chat answer: {chat_answer}")
 
-        # find first </think>
-        final_answer = final_answer.split(END_TOKEN)[0]
-        pos = final_answer.find(END_THINK)
-        final_answer = (
-            final_answer[pos + len(END_THINK) :] if pos != -1 else final_answer
-        )
-        final_answer = final_answer.strip("\n").strip()
-
-        final_answer = final_answer.split("\n")[0]
+        think_response, final_answer = response_func(chat_answer, thinking=True)
         final_answer = (
             final_answer.replace("最终答案：", "")
             .replace("最终答案为", "")
             .replace("最终答案", "")
             .strip()
         )
+        result["thinking"] = think_response
         result["final-answer"] = final_answer
-        logger.success(f"LLM stripped final answer: {final_answer}")
+        logger.success(f"LLM final answer: {final_answer}")
 
         return final_answer, result
+
     except Exception as e:
         import traceback
 

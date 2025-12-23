@@ -6,26 +6,13 @@
         "path": "/app/config/{task}/query.json"
     },
     "callback_url": "http://localhost:8001/receive-callback",
+    "timeout": 3600,
     "llm": {
-        "chat": {
-            "model": "/models/qwen3-32b",
-            "dtype": "bfloat16",
-            "tensor_parallel_size": 2,
-            "gpu_memory_utilization": 0.9,
-            "max_num_batched_tokens": 14336,
-            "max_model_len": 14336,
-            "max_num_seqs": 64,
-            "disable_log_stats": true,
-            "enable_prefix_caching": false,
-            "enable_chunked_prefill": false,
-            "enforce_eager": false,
-            "seed": 2025,
-            "device": "1,2"
-        },
         "embedding": {
             "model": "/models/qwen3-embedding-8b",
             "dtype": "bfloat16",
             "tensor_parallel_size": 1,
+            "pipeline_parallel_size": 1,
             "gpu_memory_utilization": 0.9,
             "max_num_batched_tokens": 14336,
             "max_model_len": 14336,
@@ -36,7 +23,23 @@
             "enforce_eager": false,
             "seed": 2025,
             "task": "embed",
-            "device": "3"
+            "device": "1"
+        },
+        "chat-glm": {
+            "model": "/models/glm-4.5-air",
+            "dtype": "bfloat16",
+            "tensor_parallel_size": 2,
+            "pipeline_parallel_size": 3,
+            "gpu_memory_utilization": 0.95,
+            "max_num_batched_tokens": 32768,
+            "max_model_len": 32768,
+            "max_num_seqs": 64,
+            "disable_log_stats": true,
+            "enable_prefix_caching": false,
+            "enable_chunked_prefill": false,
+            "enforce_eager": false,
+            "seed": 2025,
+            "device": "2,3,4,5,6,7"
         }
     },
     "pipeline": {
@@ -51,7 +54,8 @@
             "device": "0"
         },
         "query_optimize": {
-            "model": "chat",
+            "model": "chat-glm",
+            "prompt_template": "glm",
             "generate_kwargs": {
                 "top_p": 0.95,
                 "temperature": 0.6,
@@ -76,7 +80,8 @@
             "prompt": "/app/config/{task}/embedding_match_prompt.txt"
         },
         "llm_recall": {
-            "model": "chat",
+            "model": "chat-glm",
+            "prompt_template": "glm",
             "topk": 3,
             "lower_than": 0.95,
             "batch_size": 1,
@@ -92,7 +97,8 @@
             "topk": 10
         },
         "compress": {
-            "model": "chat",
+            "model": "chat-glm",
+            "prompt_template": "glm",
             "need_compress_length": 10240,
             "generate_kwargs": {
                 "top_p": 0.95,
@@ -104,7 +110,8 @@
             "prompt": "/app/config/{task}/compress_prompt.txt"
         },
         "chat": {
-            "model": "chat",
+            "model": "chat-glm",
+            "prompt_template": "glm",
             "generate_kwargs": {
                 "top_p": 0.95,
                 "temperature": 0.5,
