@@ -264,7 +264,12 @@ def process_single_query(
 
     # 5. LLM生成答案
     final_answer = _generate_llm_answer(
-        query_config["llm_query"], compressed_para, config, query_dir, file_name, default_value=query_config["default"],
+        query_config["llm_query"],
+        compressed_para,
+        config,
+        query_dir,
+        file_name,
+        default_value=query_config["default"],
     )
 
     # 6. 保存单查询结果
@@ -403,7 +408,12 @@ def _compress_paragraphs(
 
 
 def _generate_llm_answer(
-    query: str, paragraphs: list, config: dict, save_dir: str, file_name: str, default_value: str
+    query: str,
+    paragraphs: list,
+    config: dict,
+    save_dir: str,
+    file_name: str,
+    default_value: str,
 ) -> str:
     """生成LLM答案（带缓存）"""
     save_path = os.path.join(save_dir, f"{file_name}_llm.json")
@@ -501,15 +511,13 @@ def process_document_query(test_document: str, config: dict) -> tuple[list, str]
         config["pipeline"]["embedding_recall"]["prompt"] = config["pipeline"][
             "embedding_recall"
         ]["prompt"].replace("{task}", config["task"])
-        config["pipeline"]["llm_recall"]["prompt"] = config["pipeline"]["llm_recall"][
-            "prompt"
-        ].replace("{task}", config["task"])
         config["pipeline"]["compress"]["prompt"] = config["pipeline"]["compress"][
             "prompt"
         ].replace("{task}", config["task"])
         config["pipeline"]["chat"]["prompt"] = config["pipeline"]["chat"][
             "prompt"
         ].replace("{task}", config["task"])
+
         all_results = []
         for idx, single_query in enumerate(optimized_queries, 1):
             result = process_single_query(
