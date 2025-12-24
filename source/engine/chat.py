@@ -9,6 +9,7 @@ def generate_refined_answer(
     config: dict,
     query: str,
     relevant_paragraphs: List[Dict[str, str | float]],
+    default_value: str,
 ) -> Tuple[str, Dict]:
     """Load LLM model with vllm engine for two-stage answer generation"""
     logger.info(f"Loading LLM with vllm from: {config['model']}")
@@ -67,8 +68,11 @@ def generate_refined_answer(
             .strip()
         )
         result["thinking"] = think_response
-        result["final-answer"] = final_answer
-        logger.success(f"LLM final answer: {final_answer}")
+        if len(final_answer) > 16 or final_answer == "":
+            result["final-answer"] = default_value
+        else:
+            result["final-answer"] = final_answer
+        logger.success(f"LLM final answer: {result['final-answer']}")
 
         return final_answer, result
 

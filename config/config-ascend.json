@@ -57,10 +57,10 @@
             "model": "chat-glm",
             "prompt_template": "glm",
             "generate_kwargs": {
-                "top_p": 0.95,
+                "top_p": 0.8,
                 "temperature": 0.6,
-                "max_tokens": 8192,
-                "repetition_penalty": 1.0,
+                "max_tokens": 16384,
+                "repetition_penalty": 1.05,
                 "skip_special_tokens": true
             },
             "keyword_query_prompt": "/app/config/{task}/keyword_query_prompt.txt",
@@ -79,20 +79,6 @@
             "max_length": 10240,
             "prompt": "/app/config/{task}/embedding_match_prompt.txt"
         },
-        "llm_recall": {
-            "model": "chat-glm",
-            "prompt_template": "glm",
-            "topk": 3,
-            "lower_than": 0.95,
-            "batch_size": 1,
-            "max_length": 10240,
-            "generate_kwargs": {
-                "max_tokens": 1,
-                "prompt_logprobs": 1,
-                "skip_special_tokens": false
-            },
-            "prompt": "/app/config/{task}/llm_match_prompt.txt"
-        },
         "merge_recall": {
             "topk": 10
         },
@@ -101,10 +87,10 @@
             "prompt_template": "glm",
             "need_compress_length": 10240,
             "generate_kwargs": {
-                "top_p": 0.95,
-                "temperature": 0.4,
-                "max_tokens": 8192,
-                "repetition_penalty": 1.05,
+                "top_p": 0.8,
+                "temperature": 0.6,
+                "max_tokens": 16384,
+                "repetition_penalty": 1.2,
                 "skip_special_tokens": true
             },
             "prompt": "/app/config/{task}/compress_prompt.txt"
@@ -113,10 +99,10 @@
             "model": "chat-glm",
             "prompt_template": "glm",
             "generate_kwargs": {
-                "top_p": 0.95,
-                "temperature": 0.5,
-                "max_tokens": 8192,
-                "repetition_penalty": 1.1,
+                "top_p": 0.8,
+                "temperature": 0.6,
+                "max_tokens": 16384,
+                "repetition_penalty": 1.25,
                 "skip_special_tokens": true
             },
             "prompt": "/app/config/{task}/chat_prompt.txt"

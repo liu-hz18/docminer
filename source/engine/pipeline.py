@@ -264,7 +264,7 @@ def process_single_query(
 
     # 5. LLM生成答案
     final_answer = _generate_llm_answer(
-        query_config["llm_query"], compressed_para, config, query_dir, file_name
+        query_config["llm_query"], compressed_para, config, query_dir, file_name, default_value=query_config["default"],
     )
 
     # 6. 保存单查询结果
@@ -403,7 +403,7 @@ def _compress_paragraphs(
 
 
 def _generate_llm_answer(
-    query: str, paragraphs: list, config: dict, save_dir: str, file_name: str
+    query: str, paragraphs: list, config: dict, save_dir: str, file_name: str, default_value: str
 ) -> str:
     """生成LLM答案（带缓存）"""
     save_path = os.path.join(save_dir, f"{file_name}_llm.json")
@@ -412,6 +412,7 @@ def _generate_llm_answer(
             config=config["pipeline"]["chat"],
             query=query,
             relevant_paragraphs=paragraphs,
+            default_value=default_value,
         )
         llm_result["query"] = query
         with open(save_path, "w", encoding="utf-8") as f:
