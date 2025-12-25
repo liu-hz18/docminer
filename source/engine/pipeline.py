@@ -241,6 +241,9 @@ def process_single_query(
     keyword_para = _keyword_recall(
         query_config["keyword_query"], sample_document, config, query_dir, file_name
     )
+    keyword_plain_para = _keyword_recall_plain(
+        query_config["keyword_query"], sample_document, config, query_dir, file_name
+    )
 
     # 2. 嵌入召回
     embedding_para = _embedding_recall(
@@ -254,7 +257,7 @@ def process_single_query(
 
     # 3. 合并召回结果
     merged_para = _merge_recall_results(
-        keyword_para, embedding_para, config, query_dir, file_name
+        keyword_para, embedding_para, keyword_plain_para, config, query_dir, file_name
     )
 
     # 4. 文本压缩
@@ -301,7 +304,26 @@ def _keyword_recall(
             f.write(json.dumps(result, indent=4, ensure_ascii=False))
         return result["paragraphs"]
     else:
-        logger.info(f"加载缓存关键词召回结果: {save_path}")
+        logger.info(f"加载缓存关键词召回[带长度惩罚]结果: {save_path}")
+        with open(save_path, "r", encoding="utf-8") as f:
+            return json.load(f)["paragraphs"]
+
+
+def _keyword_recall_plain(
+    query: str, document: str, config: dict, save_dir: str, file_name: str
+) -> list:
+    """关键词召回（内部辅助函数）"""
+    save_path = os.path.join(save_dir, f"{file_name}_keyword_recall_plain.json")
+    if not os.path.exists(save_path):
+        _, result = keyword_recall_relevant_paragraphs(
+            document=document, query=query, config=config["pipeline"]["keyword_recall_plain"]
+        )
+        result["query"] = query
+        with open(save_path, "w", encoding="utf-8") as f:
+            f.write(json.dumps(result, indent=4, ensure_ascii=False))
+        return result["paragraphs"]
+    else:
+        logger.info(f"加载缓存关键词[无长度惩罚]召回结果: {save_path}")
         with open(save_path, "r", encoding="utf-8") as f:
             return json.load(f)["paragraphs"]
 
@@ -336,6 +358,7 @@ def _embedding_recall(
 def _merge_recall_results(
     keyword_para: list,
     embedding_para: list,
+    keyword_plain_para: list,
     config: dict,
     save_dir: str,
     file_name: str,
@@ -358,7 +381,23 @@ def _merge_recall_results(
                     "paragraph": k_para["paragraph"],
                     "score": k_para["score"],
                     "length": k_para.get("length", 0),
-                    "source": "关键词召回",
+                    "source": "关键词召回（bm25）",
+                }
+            )
+            if len(merged) >= merge_topk:
+                break
+
+        # 处理关键词结果
+        k_plain_para = keyword_plain_para[i]
+        k_plain_hash = hash(k_plain_para["paragraph"])
+        if k_plain_hash not in para_hashes:
+            para_hashes.add(k_plain_hash)
+            merged.append(
+                {
+                    "paragraph": k_plain_para["paragraph"],
+                    "score": k_plain_para["score"],
+                    "length": k_plain_para.get("length", 0),
+                    "source": "关键词召回（tf-idf）",
                 }
             )
             if len(merged) >= merge_topk:
@@ -517,7 +556,6 @@ def process_document_query(test_document: str, config: dict) -> tuple[list, str]
         config["pipeline"]["chat"]["prompt"] = config["pipeline"]["chat"][
             "prompt"
         ].replace("{task}", config["task"])
-
         all_results = []
         for idx, single_query in enumerate(optimized_queries, 1):
             result = process_single_query(

@@ -71,7 +71,13 @@
             "model": "bm25",
             "topk": 10,
             "bm25_k1": 1.5,
-            "bm25_b": 0.2
+            "bm25_b": 0.4
+        },
+        "keyword_recall_plain": {
+            "model": "bm25",
+            "topk": 10,
+            "bm25_k1": 1.5,
+            "bm25_b": 0.0
         },
         "embedding_recall": {
             "model": "embedding",
@@ -80,7 +86,7 @@
             "prompt": "/app/config/{task}/embedding_match_prompt.txt"
         },
         "merge_recall": {
-            "topk": 10
+            "topk": 15
         },
         "compress": {
             "model": "chat-glm",

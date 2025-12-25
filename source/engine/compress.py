@@ -2,7 +2,7 @@ import re
 from loguru import logger
 from vllm import SamplingParams
 from typing import List, Dict
-from .utils import extract_table_text
+from .utils import replace_html_tags, extract_table_text
 from .llmhub import get_llm
 from .prompt import get_prompt_and_response_template
 
@@ -34,27 +34,32 @@ def compress_paragraphs(
     logger.info(f"load prompt file from {prompt_file}")
     with open(prompt_file, "r", encoding="utf-8") as f:
         prompt_template = f.read()
-    prompt_func, response_func = get_prompt_and_response_template(config["prompt_template"])
+    prompt_func, response_func = get_prompt_and_response_template(
+        config["prompt_template"]
+    )
 
     for idx, p in enumerate(relevant_paragraphs):
+        try:
+            document = replace_html_tags(p["paragraph"])
+        except Exception as e:
+            logger.info(f"transform HTML table into string failed. Exception: {str(e)}")
+            document = p["paragraph"]
+
         if (
             "<table>" in p["paragraph"]
-            or len(p["paragraph"]) > config["need_compress_length"]
+            or len(document) > config["need_compress_length"]
         ):
             if "<table>" in p["paragraph"]:
                 try:
-                    prompt = prompt_template.replace(
-                        "{document}", extract_table_text(p["paragraph"])
-                    )
+                    document = extract_table_text(p["paragraph"])
                 except Exception as e:
                     logger.info(
                         f"transform HTML table into string failed. Exception: {str(e)}"
                     )
-                    prompt = prompt_template.replace("{document}", p["paragraph"])
-            else:
-                prompt = prompt_template.replace("{document}", p["paragraph"])
+
+            prompt = prompt_template.replace("{document}", document)
             prompt = prompt.replace("{query}", query)
-            
+
             prompt = prompt_func(prompt, thinking=True)
             logger.debug(
                 f"Compress-stage prompt (length={len(prompt)}) idx={idx}: {prompt[:4096]}..."
@@ -80,8 +85,8 @@ def compress_paragraphs(
             processed_p = {
                 "score": p["score"],
                 "compressed": False,
-                "length": len(p["paragraph"]),
-                "paragraph": p["paragraph"],
+                "length": len(document),
+                "paragraph": document,
                 "origin_length": len(p["paragraph"]),
                 "origin_paragraph": p["paragraph"],
                 "source": p["source"],
@@ -122,7 +127,9 @@ def compress_paragraphs(
             # 解析生成结果并回填
             for idx, output in zip(compress_indices, outputs):
                 llm_response = output.outputs[0].text.strip()
-                think_response, compress_context = response_func(llm_response, thinking=True)
+                think_response, compress_context = response_func(
+                    llm_response, thinking=True
+                )
 
                 result[idx]["think"] = think_response
 

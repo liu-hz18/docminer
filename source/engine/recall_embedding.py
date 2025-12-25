@@ -3,27 +3,7 @@ import torch
 from typing import List, Tuple, Dict, Any
 from loguru import logger
 from .llmhub import get_llm
-
-
-def replace_html_tags(text):
-    """
-    将连续的<任意内容>标签替换为|，并清理多余分隔符
-    :param text: 原始包含html标签的文本
-    :return: 替换后的文本
-    """
-    # 正则匹配所有<开头、>结尾的标签（非贪婪匹配，避免跨标签匹配）
-    # 正则解释：<.*?> 匹配 < 开头，> 结尾的任意字符（非贪婪）
-    pattern = r"<.*?>"
-    # 第一步：将所有标签替换为|
-    temp = re.sub(pattern, "|", text)
-    # 第二步：清理多余的|（连续|、开头/结尾的|、换行符）
-    # 1. 替换连续的|为单个|
-    temp = re.sub(r"\|+", "|", temp)
-    # 2. 替换换行符为空（去除换行）
-    temp = re.sub(r"\n", "", temp)
-    # 3. 去除开头和结尾的|
-    result = temp.strip("|")
-    return result
+from .utils import replace_html_tags
 
 
 def get_document_embeddings(
