@@ -1,4 +1,5 @@
 import os
+import re
 import json
 import torch
 from loguru import logger
@@ -381,7 +382,7 @@ def _merge_recall_results(
                     "paragraph": k_para["paragraph"],
                     "score": k_para["score"],
                     "length": k_para.get("length", 0),
-                    "source": "关键词召回（bm25）",
+                    "source": "bm25召回",
                 }
             )
             if len(merged) >= merge_topk:
@@ -397,7 +398,7 @@ def _merge_recall_results(
                     "paragraph": k_plain_para["paragraph"],
                     "score": k_plain_para["score"],
                     "length": k_plain_para.get("length", 0),
-                    "source": "关键词召回（tf-idf）",
+                    "source": "tf-idf召回",
                 }
             )
             if len(merged) >= merge_topk:
@@ -569,7 +570,7 @@ def process_document_query(test_document: str, config: dict) -> tuple[list, str]
                 file_name=file_name,
             )
             if result:
-                result["value"] = result["value"].replace(result["unit"], "").strip()
+                result["value"] = re.sub(re.escape(result["unit"]), "", result["value"], flags=re.IGNORECASE).strip()
                 all_results.append(result)
 
         # process all result

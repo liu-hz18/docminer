@@ -134,6 +134,12 @@ def compress_paragraphs(
                 result[idx]["think"] = think_response
 
                 compress_context = re.sub(r" +", " ", compress_context).strip()
+                compress_context = (
+                    compress_context.replace("**Output**:", "")
+                    .replace("Output:", "")
+                    .replace("Output", "")
+                    .strip()
+                )
                 logger.debug(
                     f"Compressed context (idx={idx}, length={len(compress_context)}): {compress_context[:200]}..."
                 )

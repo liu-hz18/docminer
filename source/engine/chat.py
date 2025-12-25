@@ -31,7 +31,7 @@ def generate_refined_answer(
     logger.info(f"[LLM] received {len(relevant_paragraphs)} most relevant paragraphs")
     context = ""
     for i, p in enumerate(relevant_paragraphs, 1):
-        context += f"{i}. 段落（召回源: {p['source']}，召回路相关性分数：{p['score']:.4f}）：{p['paragraph']}\n\n"
+        context += f" - 候选{i}（召回源: {p['source']}，召回源内打分：{p['score']:.4f}）：{p['paragraph']}\n"
 
     # -------------------------- 提取最终答案 --------------------------
     prompt_file = config["prompt"]
@@ -62,9 +62,9 @@ def generate_refined_answer(
 
         think_response, final_answer = response_func(chat_answer, thinking=True)
         final_answer = (
-            final_answer.replace("最终答案：", "")
-            .replace("最终答案为", "")
-            .replace("最终答案", "")
+            final_answer.replace("**Final Answer**:", "")
+            .replace("Final Answer:", "")
+            .replace("Final Answer", "")
             .strip()
         )
         result["thinking"] = think_response

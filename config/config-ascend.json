@@ -6,7 +6,7 @@
         "path": "/app/config/{task}/query.json"
     },
     "callback_url": "http://localhost:8001/receive-callback",
-    "timeout": 3600,
+    "timeout": 10800,
     "llm": {
         "embedding": {
             "model": "/models/qwen3-embedding-8b",
