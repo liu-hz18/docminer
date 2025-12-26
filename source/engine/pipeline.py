@@ -460,7 +460,7 @@ def _generate_llm_answer(
     """生成LLM答案（带缓存）"""
     save_path = os.path.join(save_dir, f"{file_name}_llm.json")
     if not os.path.exists(save_path):
-        final_answer, llm_result = generate_refined_answer(
+        llm_result = generate_refined_answer(
             config=config["pipeline"]["chat"],
             query=query,
             relevant_paragraphs=paragraphs,
@@ -469,7 +469,7 @@ def _generate_llm_answer(
         llm_result["query"] = query
         with open(save_path, "w", encoding="utf-8") as f:
             f.write(json.dumps(llm_result, indent=4, ensure_ascii=False))
-        return final_answer
+        return llm_result["final-answer"]
     else:
         logger.info(f"加载缓存LLM结果: {save_path}")
         with open(save_path, "r", encoding="utf-8") as f:

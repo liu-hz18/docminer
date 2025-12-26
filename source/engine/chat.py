@@ -10,7 +10,7 @@ def generate_refined_answer(
     query: str,
     relevant_paragraphs: List[Dict[str, str | float]],
     default_value: str,
-) -> Tuple[str, Dict]:
+) -> Dict:
     """Load LLM model with vllm engine for two-stage answer generation"""
     logger.info(f"Loading LLM with vllm from: {config['model']}")
     result = {}
@@ -74,7 +74,7 @@ def generate_refined_answer(
             result["final-answer"] = final_answer
         logger.success(f"LLM final answer: {result['final-answer']}")
 
-        return final_answer, result
+        return result
 
     except Exception as e:
         import traceback
