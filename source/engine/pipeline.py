@@ -267,8 +267,10 @@ def process_single_query(
     )
 
     # 5. LLM生成答案
+    # append default answer
+    llm_query = query_config["llm_query"] + f"（如果无法从提供的内容中找到答案，请回答：“{query_config['default']}”）"
     final_answer = _generate_llm_answer(
-        query_config["llm_query"],
+        llm_query,
         compressed_para,
         config,
         query_dir,
