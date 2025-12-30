@@ -23,6 +23,7 @@ services:
       - /lib/aarch64-linux-gnu/libglapi.so.0:/lib/aarch64-linux-gnu/libglapi.so.0:ro
       # Ascend NPU 驱动/工具链（只读）
       - /root/.cache:/root/.cache
+      - /root/.config:/root/.config
       - /usr/local/dcmi:/usr/local/dcmi
       - /usr/local/bin/npu-smi:/usr/local/bin/npu-smi
       - /usr/local/Ascend/driver/tools/hccn_tool:/usr/local/Ascend/driver/tools/hccn_tool
